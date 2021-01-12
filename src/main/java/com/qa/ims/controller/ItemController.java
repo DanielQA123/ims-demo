@@ -3,6 +3,8 @@ package com.qa.ims.controller;
 import java.lang.System.Logger;
 import java.util.List;
 
+import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
 
 
@@ -11,7 +13,7 @@ import com.qa.ims.utils.Utils;
 
 public class ItemController implements CrudController<Item>{
 	
- public static final Logger LOGGER = Logger.getLogger(ItemController.class);
+ public static final Logger LOGGER = Logger.getLogger(ItemConItemler.class);
 	
  private CrudServices<Item> itemService;
  
@@ -27,8 +29,11 @@ public class ItemController implements CrudController<Item>{
  
 @Override
 public List<Item> readAll() {
-	// TODO Auto-generated method stub
-	return null;
+	List<Item> items = itemService.readAll();
+	for(Item item: items) {
+		LOGGER.info(item.toString());
+	}
+	return items;
 }
 
 @Override
