@@ -18,11 +18,16 @@ public class ItemServices implements CrudServices<Item> {
 	}
 	
 	public Item create(Item item) {
-		
-	
-		
+		return itemDao.create(item);
 	}
 	
+	public Item update(Item item) {
+		return itemDao.update(item);
+	}
+	
+	public void delete(Long id) {
+		itemDao.delete(id);
+	}
 	
 
 }
