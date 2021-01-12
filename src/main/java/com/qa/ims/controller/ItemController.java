@@ -60,7 +60,7 @@ public void delete() {
 	LOGGER.info("Please enter the id of the item you would like to delete/remove");
 	Long itemId = Long.valueOf(getInput());
 	itemService.delete(itemId);
-	
+
 }
  
  
