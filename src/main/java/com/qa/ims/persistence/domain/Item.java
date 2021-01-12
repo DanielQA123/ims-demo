@@ -49,6 +49,26 @@ public class Item {
 		this.price = price;
 	}
 	@Override
+	public String toString() {
+		return "Item [itemId=" + itemId + ", itemName=" + itemName + ", itemQuantity=" + itemQuantity + ", price="
+				+ price + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+		
+		//int itemQuantity
+		//double myPrice;
+		//myPrice = double
+		//result = prime * result + ((itemQuantity != null) ? 0 : itemQuantity.hashCode());
+		return result;
+	}
+	
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -56,13 +76,22 @@ public class Item {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Customer other = (Customer) obj;
+		Item other = (Item) obj;
 		if (itemName == null) {
-			if (other.firstName != null)
+			if (other.itemName != null)
 				return false;
-	
+		} else if (!itemName.equals(other.itemName))
+			return false;
+		if (itemId == null) {
+			if (other.itemId != null)
+				return false;
+		} else if (!itemId.equals(other.itemId))
+			return false;
+		return true;
 
 	
+	}
+		
 	
 }
-		}
+		
