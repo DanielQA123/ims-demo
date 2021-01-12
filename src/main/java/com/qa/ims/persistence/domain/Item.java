@@ -18,5 +18,36 @@ public class Item {
 		this.ItemName = ItemName;
 		this.ItemQuantity = ItemQuantity;
 		this.price = price;
+	
+	//Getters and Setters 
+		
 	}
+	public Long getItemId() {
+		return ItemId;
+	}
+	public void setItemId(Long itemId) {
+		ItemId = itemId;
+	}
+	public String getItemName() {
+		return ItemName;
+	}
+	public void setItemName(String itemName) {
+		ItemName = itemName;
+	}
+	public Long getItemQuantity() {
+		return ItemQuantity;
+	}
+	public void setItemQuantity(Long itemQuantity) {
+		ItemQuantity = itemQuantity;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	//Getters and Setters 
+	
+	
 }
