@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.qa.ims.persistence.domain.Customer;
+
 import com.qa.ims.persistence.domain.Item;
 
 public class ItemDaoMysql implements Dao<Item> {
@@ -63,27 +63,49 @@ public class ItemDaoMysql implements Dao<Item> {
 	}
 	
 	public Item readLatest() {
-		public Customer readLatest() {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-					Statement statement = connection.createStatement();
-					ResultSet resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY id DESC LIMIT 1");) {
+					Statement stat = connection.createStatement();
+					ResultSet resultSet = stat.executeQuery("SELECT * FROM items ORDER BY id DESC LIMIT 1");) {
 				resultSet.next();
-				return customerFromResultSet(resultSet);
+				return itemFromResultSet(resultSet);
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
 			}
 			return null;
-		
 	}
 	
-	
+	//Creates an Item within the database
 	
 	@Override
 	public Item create(Item t) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement stat = connection.createStatement();) {
+			stat.executeUpdate("INSERT into items(item_name, itemQuantity, price) values('" + t.getItemName()
+					+ "','" + t.getItemQuantity() + "','" + t.getPrice() + "')");
+			return readLatest();
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
+	
+	public Item readItem(Long id) {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement stat = connection.createStatement();
+				ResultSet resultSet = stat.executeQuery("SELECT FROM items where id = " + id);) {
+			resultSet.next();
+			return itemFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+		
+	}
+		
+		
 
 	@Override
 	public Item update(Item t) {
