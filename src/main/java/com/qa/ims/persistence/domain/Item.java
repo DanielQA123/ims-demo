@@ -88,10 +88,8 @@ public class Item {
 		} else if (!itemId.equals(other.itemId))
 			return false;
 		return true;
-
 	
 	}
 		
-	
 }
 		
