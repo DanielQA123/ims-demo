@@ -13,7 +13,7 @@ import com.qa.ims.utils.Utils;
 
 public class ItemController implements CrudController<Item>{
 	
- public static final Logger LOGGER = Logger.getLogger(ItemConItemler.class);
+ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	
  private CrudServices<Item> itemService;
  
@@ -36,8 +36,13 @@ public List<Item> readAll() {
 	return items;
 }
 
+//Creates an item by taking all the user input
+
 @Override
 public Item create() {
+	LOGGER.info("May you please enter item name");
+	String itemName = getInput();
+
 	// TODO Auto-generated method stub
 	return null;
 }
@@ -48,9 +53,13 @@ public Item update() {
 	return null;
 }
 
+//Delete an existing item by the item id
+
 @Override
 public void delete() {
-	// TODO Auto-generated method stub
+	LOGGER.info("Please enter the id of the item you would like to delete/remove");
+	Long itemId = Long.valueOf(getInput());
+	itemService.delete(itemId);
 	
 }
  
