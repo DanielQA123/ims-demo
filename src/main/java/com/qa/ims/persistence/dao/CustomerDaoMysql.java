@@ -107,6 +107,7 @@ public class CustomerDaoMysql implements Dao<Customer> {
 	}
 
 	/**
+	 * 
 	 * Updates a customer in the database
 	 * 
 	 * @param customer - takes in a customer object, the id field will be used to

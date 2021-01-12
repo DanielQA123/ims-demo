@@ -54,6 +54,7 @@ public class ItemDaoMysql implements Dao<Item> {
 			items.add(itemFromResultSet(resultSet));
 			}
 			return items;
+			
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -68,6 +69,7 @@ public class ItemDaoMysql implements Dao<Item> {
 					ResultSet resultSet = stat.executeQuery("SELECT * FROM items ORDER BY id DESC LIMIT 1");) {
 				resultSet.next();
 				return itemFromResultSet(resultSet);
+				
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
@@ -78,12 +80,13 @@ public class ItemDaoMysql implements Dao<Item> {
 	//Creates an Item within the database
 	
 	@Override
-	public Item create(Item t) {
+	public Item create(Item item) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("INSERT into items(item_name, itemQuantity, price) values('" + t.getItemName()
-					+ "','" + t.getItemQuantity() + "','" + t.getPrice() + "')");
+			stat.executeUpdate("INSERT into items(item_name, itemQuantity, price) values('" + item.getItemName()
+					+ "','" + item.getItemQuantity() + "','" + item.getPrice() + "')");
 			return readLatest();
+			
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -97,6 +100,7 @@ public class ItemDaoMysql implements Dao<Item> {
 				ResultSet resultSet = stat.executeQuery("SELECT FROM items where id = " + id);) {
 			resultSet.next();
 			return itemFromResultSet(resultSet);
+			
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -105,17 +109,36 @@ public class ItemDaoMysql implements Dao<Item> {
 		
 	}
 		
-		
+	//Updates an item/product in the database
+	//@param item - takes in an item object, the id field will be used to
+	 //update that item in the database
 
 	@Override
-	public Item update(Item t) {
-		// TODO Auto-generated method stub
+	public Item update(Item item) {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement stat = connection.createStatement();) {
+			stat.executeUpdate("UPDATE items set item_name ='" + item.getItemName() + "', price ='"
+					+ item.getPrice() + "',itemQuantity='" + item.getItemQuantity() + "' where id =" + item.getItemId());
+			return readItem(item.getItemId());
+			
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}	
 		return null;
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement stat = connection.createStatement();) {
+			stat.executeUpdate("DELETE from items where id = " + id);
+			
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		
 		
 	}
 	
