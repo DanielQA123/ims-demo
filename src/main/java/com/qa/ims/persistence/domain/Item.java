@@ -4,15 +4,16 @@ public class Item {
 	// The products attributes
 	private Long ItemId;
 	private String ItemName;
-	private Long ItemQuantity;
+	private int ItemQuantity;
 	private double price;
 	
-	public Item(String ItemName, Long ItemQuantity) {
+	public Item(String ItemName, int ItemQuantity, double price ) {
 		super();
 		this.ItemName = ItemName;
 		this.ItemQuantity = ItemQuantity;
+		this.price = price;
 	}
-	public Item(Long ItemId, String ItemName, Long ItemQuantity, double price) {
+	public Item(Long ItemId, String ItemName, int ItemQuantity, double price) {
 		super();
 		this.ItemId = ItemId;
 		this.ItemName = ItemName;
@@ -34,10 +35,10 @@ public class Item {
 	public void setItemName(String itemName) {
 		ItemName = itemName;
 	}
-	public Long getItemQuantity() {
+	public int getItemQuantity() {
 		return ItemQuantity;
 	}
-	public void setItemQuantity(Long itemQuantity) {
+	public void setItemQuantity(int itemQuantity) {
 		ItemQuantity = itemQuantity;
 	}
 	public double getPrice() {
@@ -47,7 +48,7 @@ public class Item {
 		this.price = price;
 	}
 	
-	//Getters and Setters 
+
 	
 	
 }
