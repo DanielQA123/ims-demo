@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
+import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order> {
 	
@@ -17,6 +18,11 @@ public class OrderController implements CrudController<Order> {
 	public OrderController(CrudServices<Order> orderService) {
 		this.orderService = orderService;
 	}
+	String getInput() {
+		return Utils.getInput();
+	}
+	
+	//reads all the info regarding orders to the logger
 	
 	@Override
 	public List<Order> readAll() {
