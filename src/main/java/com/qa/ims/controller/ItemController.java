@@ -26,6 +26,12 @@ public class ItemController implements CrudController<Item>{
  String getInput() {
 	 return Utils.getInput();
  }
+
+ double getDoubleInput() {
+	 return Utils.getDoubleInput();
+ } 
+ 
+ 
  
 //Trying to read all the info regarding to items in the logger
  
@@ -45,7 +51,7 @@ public Item create() {
 	LOGGER.info("May you please enter item name");
 	String itemName = getInput();
 	LOGGER.info("Please enter item price");
-	double price = getInput();
+	double price = getDoubleInput();
 	Item item = itemService.create(new Item(itemName, price));
 	LOGGER.info("Item created");
 	return item;
@@ -59,7 +65,7 @@ public Item update() {
 	LOGGER.info("Please enter an item name");
 	String itemName = getInput();
 	LOGGER.info("Please enter the price of the item");
-	double price = getInput();
+	double price = getDoubleInput();
 	Item item = itemService.update(new Item(itemId, itemName, price));
 	return item;
 }
