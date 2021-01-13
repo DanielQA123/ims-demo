@@ -48,9 +48,9 @@ public List<Item> readAll() {
 
 @Override
 public Item create() {
-	LOGGER.info("May you please enter item name");
+	LOGGER.info("May you please enter the item name");
 	String itemName = getInput();
-	LOGGER.info("Please enter item price");
+	LOGGER.info("Please enter the item price");
 	double price = getDoubleInput();
 	Item item = itemService.create(new Item(itemName, price));
 	LOGGER.info("Item created");
@@ -62,9 +62,9 @@ public Item create() {
 public Item update() {
 	LOGGER.info("Please enter the item id of the item you would like to update");
 	Long itemId = Long.valueOf(getInput());
-	LOGGER.info("Please enter an item name");
+	LOGGER.info("Please enter the item name");
 	String itemName = getInput();
-	LOGGER.info("Please enter the price of the item");
+	LOGGER.info("Please enter the item price");
 	double price = getDoubleInput();
 	Item item = itemService.update(new Item(itemId, itemName, price));
 	return item;
