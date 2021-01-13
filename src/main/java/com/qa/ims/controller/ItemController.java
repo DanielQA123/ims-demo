@@ -10,7 +10,7 @@ import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
 
 
-//Takes in the item details for CRUD functionallity
+//Takes in the item details for CRUD functionality
 
 
 public class ItemController implements CrudController<Item>{
@@ -42,8 +42,15 @@ public List<Item> readAll() {
 
 @Override
 public Item create() {
-	LOGGER.info("May you please enter item name");
+	LOGGER.info("May you please enter the item name");
 	String itemName = getInput();
+	LOGGER.info("Please enter the item id");
+	Long itemId = Long.valueOf(getInput());
+	LOGGER.info("May you enter the item price");
+	double price = getInput();
+	Item item = itemService.create(new Item(itemName,price));
+	LOGGER.info("Item Created");
+	
 
 	// TODO Auto-generated method stub
 	return null;
