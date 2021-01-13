@@ -16,29 +16,21 @@ public class OrderServices implements CrudServices<Order> {
 }
 	@Override
 	public List<Order> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.readAll();
 	}
-
+	
+	@Override
+	public Order create(Order order) {
+		return orderDao.create(order);
+	}
 
 	@Override
-	public Order create(Order t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Order update(Order order) {	
+		return orderDao.create(order);
 	}
-
-
-	@Override
-	public Order update(Order t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		orderDao.delete(id);		
 	}
 
 }
