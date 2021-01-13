@@ -1,7 +1,9 @@
 package com.qa.ims.controller;
 
-import java.lang.System.Logger;
+
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.services.CrudServices;
@@ -17,7 +19,7 @@ public class ItemController implements CrudController<Item>{
 	
  private CrudServices<Item> itemService;
  
- public ItemController(CrudService<Item> itemService) {
+ public ItemController(CrudServices<Item> itemService) {
 	 this.itemService = itemService;
  }
 
