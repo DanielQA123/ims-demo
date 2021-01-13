@@ -36,9 +36,8 @@ public class ItemDaoMysql implements Dao<Item> {
 	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
 	Long itemId = resultSet.getLong("id");
 	String itemName = resultSet.getString("item_name");
-	int itemQuantity = resultSet.getInt("quantity");
 	double price = resultSet.getDouble("price");
-	return new Item(itemId, itemName, itemQuantity, price);
+	return new Item(itemId, itemName, price);
 	}
 
 	//Reads all the items within the database 
@@ -83,8 +82,8 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item create(Item item) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("INSERT into items(item_name, itemQuantity, price) values('" + item.getItemName()
-					+ "','" + item.getItemQuantity() + "','" + item.getPrice() + "')");
+			stat.executeUpdate("INSERT into items(item_name, price) values('" + item.getItemName()
+					+ "','" + "','" + item.getPrice() + "')");
 			return readLatest();
 			
 		} catch (Exception e) {
@@ -97,7 +96,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item readItem(Long id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();
-				ResultSet resultSet = stat.executeQuery("SELECT FROM items where id = " + id);) {
+				ResultSet resultSet = stat.executeQuery("SELECT * FROM items where id = " + id);) {
 			resultSet.next();
 			return itemFromResultSet(resultSet);
 			
@@ -118,7 +117,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
 			stat.executeUpdate("UPDATE items set item_name ='" + item.getItemName() + "', price ='"
-					+ item.getPrice() + "',itemQuantity='" + item.getItemQuantity() + "' where id =" + item.getItemId());
+					+ item.getPrice() + "' where id =" + item.getItemId());
 			return readItem(item.getItemId());
 			
 		} catch (Exception e) {
