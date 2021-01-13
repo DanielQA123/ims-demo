@@ -46,7 +46,7 @@ public Item create() {
 	String itemName = getInput();
 
 	// TODO Auto-generated method stub
-	return null;
+	return item;
 }
 
 @Override

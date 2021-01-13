@@ -4,20 +4,17 @@ public class Item {
 	// The products attributes
 	private Long itemId;
 	private String itemName;
-	private int itemQuantity;
 	private double price;
 	
-	public Item(String itemName, int itemQuantity, double price ) {
+	public Item(String itemName, double price ) {
 		super();
 		this.itemName = itemName;
-		this.itemQuantity = itemQuantity;
 		this.price = price;
 	}
-	public Item(Long itemId, String itemName, int itemQuantity, double price) {
+	public Item(Long itemId, String itemName, double price) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
-		this.itemQuantity = itemQuantity;
 		this.price = price;
 	
 	//Getters and Setters 
@@ -36,12 +33,7 @@ public class Item {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	public int getItemQuantity() {
-		return itemQuantity;
-	}
-	public void setItemQuantity(int itemQuantity) {
-		this.itemQuantity = itemQuantity;
-	}
+	
 	public double getPrice() {
 		return price;
 	}
@@ -50,7 +42,7 @@ public class Item {
 	}
 	@Override
 	public String toString() {
-		return "Item [itemId=" + itemId + ", itemName=" + itemName + ", itemQuantity=" + itemQuantity + ", price="
+		return "Item [itemId=" + itemId + ", itemName=" + itemName  + ", price="
 				+ price + "]";
 	}	
 	@Override
@@ -59,7 +51,6 @@ public class Item {
 		int result = 1;
 		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
 		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
-		result = prime * result + itemQuantity;
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -83,8 +74,6 @@ public class Item {
 			if (other.itemName != null)
 				return false;
 		} else if (!itemName.equals(other.itemName))
-			return false;
-		if (itemQuantity != other.itemQuantity)
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
