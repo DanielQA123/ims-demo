@@ -28,7 +28,7 @@ public class ItemController implements CrudController<Item>{
  }
  
  double getDouble() {
-	 return Utils.getDouble();
+	 return Utils.getDoubleInput();
  }
  
 //Trying to read all the info regarding to items in the logger
@@ -62,7 +62,7 @@ public Item update() {
 	LOGGER.info("Please enter the item name");
 	String itemName = getInput();
 	LOGGER.info("Please enter the price of the item");
-	double price = getDouble();
+	double price = getDoubleInput();
 	Item item = itemService.update(new Item(itemId, itemName, price));
 	return item;
 }
