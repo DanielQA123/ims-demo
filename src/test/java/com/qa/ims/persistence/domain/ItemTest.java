@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +50,32 @@ public class ItemTest {
 		assertEquals(1L, item.getItemId(), 0);
 		assertEquals("Toaster", item.getItemName());
 		assertEquals(24.00, item.getPrice());
-		
+	}
+	
+	@Test
+	public void checkEquality() {
+		assertFalse(item.equals(item));
+	}
+	
+	@Test
+	public void checkEqualityBetweenDifferentObjects() {
+		assertTrue(item.equals(other));
+	}
+	
+	@Test
+	public void itemNameNullButOtherNameNotNull() {
+		item.setItemName(null);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void itemNameNotEquals() {
+		other.setItemName("Kettle");
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void checkEqualityBetweenDifferentObjectsNullName() {
 		
 	}
 
