@@ -14,4 +14,11 @@ public class Utils {
 		return scanner.nextLine();
 	}
 
+	public static String getDouble() {
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
+		
+	}
+	
 }

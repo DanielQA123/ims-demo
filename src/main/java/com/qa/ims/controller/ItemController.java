@@ -27,6 +27,10 @@ public class ItemController implements CrudController<Item>{
 	 return Utils.getInput();
  }
  
+ double getDouble() {
+	 return getDouble();
+ }
+ 
 //Trying to read all the info regarding to items in the logger
  
 @Override
@@ -47,19 +51,22 @@ public Item create() {
 	LOGGER.info("Please enter the item id");
 	Long itemId = Long.valueOf(getInput());
 	LOGGER.info("May you enter the item price");
-	double price = getInput();
+	double price = getDouble();
 	Item item = itemService.create(new Item(itemName,price));
 	LOGGER.info("Item Created");
-	
-
-	// TODO Auto-generated method stub
-	return null;
+	return item;
 }
 
 @Override
 public Item update() {
-	// TODO Auto-generated method stub
-	return null;
+	LOGGER.info("Please enter the id of the item you would like to update");
+	Long itemId = Long.valueOf(getInput());
+	LOGGER.info("Please enter the item name");
+	String itemName = getInput();
+	LOGGER.info("Please enter the price of the item");
+	double price = getDouble();
+	Item item = itemService.update(new Item(itemId, itemName, price));
+	return item;
 }
 
 //Delete an existing item by the item id
