@@ -14,10 +14,10 @@ public class Utils {
 		return scanner.nextLine();
 	}
 
-	public static String getDouble() {
+	public static double getDouble() {
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine();
+		return scanner.nextDouble();
 		
 	}
 	
