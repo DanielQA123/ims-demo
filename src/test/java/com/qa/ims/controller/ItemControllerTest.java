@@ -28,7 +28,7 @@ public class ItemControllerTest {
 	  String itemName = "";
 	  int itemQuantity = ;
 	  double price = ;
-	  Mockito.doReturn(itemName, price).when(itemController).getInput();
+	  Mockito.doReturn(itemName, itemQuantity, price).when(itemController).getInput();
 	  
 	  
   }
