@@ -28,7 +28,7 @@ public class ItemController implements CrudController<Item>{
  }
  
  double getDouble() {
-	 return Utils.getDouble();
+	 return Utils.getDoubleInput();
  }
  
 //Trying to read all the info regarding to items in the logger
