@@ -38,4 +38,10 @@ public class ItemServicesTest {
 		itemServices.update(item);
 		Mockito.verify(itemDao, Mockito.times(1)).update(item);
 	}
+	
+	@Test
+	public void itemServicesDelete() {
+		itemServices.delete(1L);
+		Mockito.verify(itemDao, Mockito.times(1)).delete(1L);
+	}
 }
