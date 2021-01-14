@@ -36,8 +36,8 @@ public class OrderController implements CrudController<Order> {
 	
 	@Override
 	public Order create() {
-	LOGGER.info("May you enter the order id");
-	Long
+	LOGGER.info("May you enter the address you want the order to be delivered to");
+	String shippingAddress = getInput();
 	
 		// TODO Auto-generated method stub
 		return null;
@@ -45,14 +45,22 @@ public class OrderController implements CrudController<Order> {
 
 	@Override
 	public Order update() {
+		LOGGER.info("Please enter the id of the order you would like to update");
+		Long orderId = Long.valueOf(getInput());
+		
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void delete() {
-		// TODO Auto-generated method stub
-		
+		LOGGER.info("Please enter the order id of the order you would like to delete");
+		Long orderId = Long.valueOf(getInput());
+		LOGGER.info("Please enter the customer id to confirm deletion of order");
+		Long customerId = Long.valueOf(getInput());
+		orderService.delete(orderId);
+		orderService.delete(customerId);	
 	}
 
 
