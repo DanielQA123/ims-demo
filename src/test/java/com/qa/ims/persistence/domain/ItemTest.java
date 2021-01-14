@@ -56,5 +56,95 @@ public class ItemTest {
 	public void checkEquality() {
 		assertTrue(item.equals(item));
 	}
+	
+	@Test
+	public void checkEqualityBetweenDifferentObjects() {
+		assertTrue(item.equals(other));
+	}
+	
+	@Test
+	public void itemNameNullButOtherNameNotNull() {
+		item.setItemName(null);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void itemNamesNotEqual() {
+		item.setItemName(null);
+		other.setItemName(null);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void checkEqualityBetweenDifferentObjectsNullName() {
+		item.setItemName(null);
+		other.setItemName(null);
+		assertTrue(item.equals(other));
+	}
+	
+	@Test
+	public void nullItemId() {
+		item.setItemId(null);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void nullItemIdOnBoth() {
+		item.setItemId(null);
+		other.setItemId(null);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void otherItemIdDifferent() {
+		other.setItemId(2L);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void nullPrice() {
+		item.setPrice(0);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void nullPriceOnBoth() {
+		item.setPrice(0);
+		other.setPrice(0);
+		assertTrue(item.equals(other));
+	}
+	
+	@Test
+	public void otherPriceDifferent() {
+		other.setPrice(24.00);
+		assertFalse(item.equals(other));
+	}
+	
+	@Test
+	public void constructorWithoutId() {
+		Item item = new Item("Toaster", 24.00);
+		assertNull(item.getItemId());
+		assertNotNull(item.getItemName());
+		assertNotNull(item.getPrice());
+	}
+	
+	@Test
+	public void hashCodeTest() {
+		assertEquals(item.hashCode(), other.hashCode());
+	}
+	
+	@Test
+	public void hashCodeTestWithNull() {
+		Item item = new Item(null, null, 0);
+		Item other = new Item(null, null, 0);
+		assertEquals(item.hashCode(), other.hashCode());
+	}
+	
+	@Test
+	public void toStringTest() {
+		String toString = "ItemId:1 item name:Toaster price:24.00";
+		assertEquals(toString, item.toString());
+	}
+	
 
 }
