@@ -3,20 +3,22 @@ package com.qa.ims.persistence.domain;
 import java.util.List;
 
 public class Order {
-	//attributes 
-	
+	// attributes
+	//private totalCost;
+	//private List<orderline> orderlines;
+
 	private Long orderId;
 	private String shippingAddress;
 	private Long customerId;
 	private List<Item> purchasedItem;
-//private totalCost;
-//private List<orderline> orderlines;
-	public Order( String shippingAddress, List<Item> purchasedItem) {
+
+
+	public Order(String shippingAddress, List<Item> purchasedItem) {
 		super();
 		this.shippingAddress = shippingAddress;
 		this.purchasedItem = purchasedItem;
 
-}
+	}
 
 	public Order(Long orderId, String shippingAddress, Long customerId, List<Item> purchasedItem) {
 		super();
@@ -24,9 +26,16 @@ public class Order {
 		this.shippingAddress = shippingAddress;
 		this.customerId = customerId;
 		this.purchasedItem = purchasedItem;
-	
-	//getters and setters
 	}
+
+	
+	public Order(String shippingAddress, Long customerId, List<Item> purchasedItem) {
+		super();
+		this.shippingAddress = shippingAddress;
+		this.customerId = customerId;
+		this.purchasedItem = purchasedItem;
+	}
+
 
 	public Long getOrderId() {
 		return orderId;
@@ -108,9 +117,5 @@ public class Order {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
+
 }

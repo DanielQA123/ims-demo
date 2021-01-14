@@ -26,6 +26,10 @@ public class OrderController implements CrudController<Order> {
 		return Utils.getDouble();
 	}
 	
+	Long getLongInput() {
+		return Utils.getLongInput();
+	}
+	
 	//reads all the info regarding orders to the logger
 	
 	@Override
@@ -42,10 +46,13 @@ public class OrderController implements CrudController<Order> {
 	public Order create() {
 	LOGGER.info("May you enter the address you want the order to be delivered to");
 	String shippingAddress = getInput();
-	LOGGER.info("May you enter the item");
-	String itemName = getInput();
-	LOGGER.info("Please enter the item price ");
-	double priceOfOrder = getDouble();
+	LOGGER.info("May you enter the customer id");
+	Long customerId = getLongInput();
+	LOGGER.info("Add the orderId");
+	Long orderId =getLongInput();
+	LOGGER.info("Add your purchased item that you want to create an order for ");
+	String purchasedItem = getInput();
+	Order order = orderService.create(new Order(orderId, shippingAddress, customerId, purchasedItem));
 	LOGGER.info("Order created");		
 	return order;
 	}
@@ -54,10 +61,14 @@ public class OrderController implements CrudController<Order> {
 	public Order update() {
 		LOGGER.info("Please enter the id of the order you would like to update");
 		Long orderId = Long.valueOf(getInput());
-		
-		
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("Please confirm the address of the order");
+		String shippingAddress = getInput();
+		LOGGER.info("Add the item you want to the order to update");
+		String purchasedItem = getInput();
+		LOGGER.info("Please confirm your customer id");
+		Long customerId = getLongInput();
+		Order order = orderService.update(new Order(orderId, shippingAddress, customerId, purchasedItem));
+		return order;
 	}
 
 	@Override
