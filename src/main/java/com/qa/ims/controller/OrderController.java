@@ -1,5 +1,6 @@
 package com.qa.ims.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -23,7 +24,13 @@ public class OrderController implements CrudController<Order> {
 		this.orderService = orderService;
 		this.itemService = itemService;
 	}
-
+	
+	List<Item> purchasedItem = new ArrayList<>();
+	
+	public void addItem(Item item) {
+		purchasedItem.add(item);
+	}
+	
 	String getInput() {
 		return Utils.getInput();
 	}
@@ -57,7 +64,11 @@ public class OrderController implements CrudController<Order> {
 	LOGGER.info("Add the orderId");
 	Long orderId =getLongInput();
 	LOGGER.info("Add your purchased item that you want to create an order for ");
-	List<Item> purchasedItem = itemServices.
+	List<Item> purchasedItem = itemService.readAll();
+	for (Item item : purchasedItem) {
+		if (item instanceof Item) {	
+	}else if ()
+	}
 	
 	Order order = orderService.create(new Order(orderId, shippingAddress, customerId, purchasedItem));
 	LOGGER.info("Order created");		
