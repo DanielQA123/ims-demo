@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.qa.ims.persistence.domain.Customer;
+//import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Order;
 
 public class OrderDaoMysql implements Dao<Order> {
@@ -35,8 +35,9 @@ public class OrderDaoMysql implements Dao<Order> {
 
 	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
 		Long orderId = resultSet.getLong("orderId");
-
-		return null;
+		String shippingAddress = resultSet.getString("shippingAddress");
+		Long customerId = resultSet.getLong("customerId");
+		return new Order(orderId, shippingAddress, customerId);
 
 	}
 
@@ -60,7 +61,7 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order readLatest() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();
-				ResultSet resultSet = stat.executeQuery("SELECT * FROM orders ORDER BY id DESC LIMIT 1");) {
+				ResultSet resultSet = stat.executeQuery("SELECT * FROM orders ORDER BY orderId DESC LIMIT 1");) {
 			resultSet.next();
 			return orderFromResultSet(resultSet);
 
@@ -77,7 +78,7 @@ public class OrderDaoMysql implements Dao<Order> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
 			stat.executeUpdate("INSERT into orders (shippingAddress, customerId) values('" + order.getShippingAddress()
-					+ "','" + order.getCustomerId() + "')");
+					+ "'," + order.getCustomerId() + ")");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
