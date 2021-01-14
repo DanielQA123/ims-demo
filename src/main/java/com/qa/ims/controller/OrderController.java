@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
+import com.qa.ims.services.ItemServices;
 import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order> {
@@ -14,10 +16,14 @@ public class OrderController implements CrudController<Order> {
 
 	private CrudServices<Order> orderService;
 	
+	private CrudServices<Item> itemService;
 	
-	public OrderController(CrudServices<Order> orderService) {
+	public OrderController(CrudServices<Order> orderService, CrudServices<Item> itemService) {
+		super();
 		this.orderService = orderService;
+		this.itemService = itemService;
 	}
+
 	String getInput() {
 		return Utils.getInput();
 	}
@@ -51,7 +57,8 @@ public class OrderController implements CrudController<Order> {
 	LOGGER.info("Add the orderId");
 	Long orderId =getLongInput();
 	LOGGER.info("Add your purchased item that you want to create an order for ");
-	String purchasedItem = getInput();
+	List<Item> purchasedItem = itemServices.
+	
 	Order order = orderService.create(new Order(orderId, shippingAddress, customerId, purchasedItem));
 	LOGGER.info("Order created");		
 	return order;
