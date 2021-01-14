@@ -26,4 +26,16 @@ public class ItemServicesTest {
 		Mockito.verify(itemDao, Mockito.times(1)).create(item);		
 	}
 	
+	@Test
+	public void itemServicesRead() {
+		itemServices.readAll();
+		Mockito.verify(itemDao, Mockito.times(1)).readAll();
+	}
+	
+	@Test
+	public void itemServicesUpdate() {
+		Item item = new Item("Toaster", 24.00);
+		itemServices.update(item);
+		Mockito.verify(itemDao, Mockito.times(1)).update(item);
+	}
 }
