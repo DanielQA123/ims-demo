@@ -57,6 +57,21 @@ public class OrderDaoMysql implements Dao<Order> {
 		return new ArrayList<>();
 	}
 
+	public Order readLatest() {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement stat = connection.createStatement();
+				ResultSet resultSet = stat.executeQuery("SELECT * FROM orders ORDER BY id DESC LIMIT 1");) {
+			resultSet.next();
+			return orderFromResultSet(resultSet);
+
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+
+	}
+
 	@Override
 	public Order create(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -70,11 +85,21 @@ public class OrderDaoMysql implements Dao<Order> {
 		}
 		return null;
 	}
-	
-	public Order readOreder (Long id) {
-		
+
+	public Order readOrder(Long id) {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement stat = connection.createStatement();
+				ResultSet resultSet = stat.executeQuery("SELECT * FROM orders where id = " + id);) {
+			resultSet.next();
+			return orderFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+
+		return null;
+
 	}
-	
 
 	@Override
 	public Order update(Order t) {

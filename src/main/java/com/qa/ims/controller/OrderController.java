@@ -22,6 +22,10 @@ public class OrderController implements CrudController<Order> {
 		return Utils.getInput();
 	}
 	
+	double getDouble() {
+		return Utils.getDouble();
+	}
+	
 	//reads all the info regarding orders to the logger
 	
 	@Override
@@ -38,9 +42,12 @@ public class OrderController implements CrudController<Order> {
 	public Order create() {
 	LOGGER.info("May you enter the address you want the order to be delivered to");
 	String shippingAddress = getInput();
-	
-		// TODO Auto-generated method stub
-		return null;
+	LOGGER.info("May you enter the item");
+	String itemName = getInput();
+	LOGGER.info("Please enter the item price ");
+	double priceOfOrder = getDouble();
+	LOGGER.info("Order created");		
+	return order;
 	}
 
 	@Override
