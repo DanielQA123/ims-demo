@@ -34,9 +34,9 @@ public class OrderDaoMysql implements Dao<Order> {
 	}
 
 	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
-		Long orderId = resultSet.getLong("orderId");
+		Long orderId = resultSet.getLong("id");
 		String shippingAddress = resultSet.getString("shippingAddress");
-		Long customerId = resultSet.getLong("customerId");
+		Long customerId = resultSet.getLong("customer_id");
 		return new Order(orderId, shippingAddress, customerId);
 
 	}
@@ -61,7 +61,7 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order readLatest() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();
-				ResultSet resultSet = stat.executeQuery("SELECT * FROM orders ORDER BY orderId DESC LIMIT 1");) {
+				ResultSet resultSet = stat.executeQuery("SELECT * FROM orders ORDER BY id DESC LIMIT 1");) {
 			resultSet.next();
 			return orderFromResultSet(resultSet);
 
@@ -77,7 +77,7 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order create(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("INSERT into orders (shippingAddress, customerId) values('" + order.getShippingAddress()
+			stat.executeUpdate("INSERT into orders (shippingAddress, customer_id) values('" + order.getShippingAddress()
 					+ "'," + order.getCustomerId() + ")");
 			return readLatest();
 		} catch (Exception e) {

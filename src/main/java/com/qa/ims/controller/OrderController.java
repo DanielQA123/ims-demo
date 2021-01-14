@@ -27,8 +27,7 @@ public class OrderController implements CrudController<Order> {
 //	}
 //	
 	
-	public OrderController(OrderServices orderServices) {
-	}
+
 
 	public OrderController(CrudServices<Order> orderService) {
 	this.orderService = orderService;
