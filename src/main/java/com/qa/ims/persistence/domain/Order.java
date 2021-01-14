@@ -9,7 +9,8 @@ public class Order {
 	private String shippingAddress;
 	private Long customerId;
 	private List<Item> purchasedItem;
-	
+//private totalCost;
+//private List<orderline> orderlines;
 	public Order( String shippingAddress, List<Item> purchasedItem) {
 		super();
 		this.shippingAddress = shippingAddress;
