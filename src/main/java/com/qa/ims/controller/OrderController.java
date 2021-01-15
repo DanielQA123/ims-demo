@@ -92,7 +92,9 @@ public class OrderController implements CrudController<Order> {
 		Long orderId = Long.valueOf(getInput());
 		LOGGER.info("Please enter your customer id to update your order");
 		Long customerId = Long.valueOf(getInput());
-		Order order = new Order(orderId, customerId);
+		LOGGER.info("Re-enter Order or Shipping Address");
+		String shippingAddress = getInput();
+		Order order = new Order(orderId, shippingAddress, customerId);
 		order = orderService.update(order);
 		LOGGER.info("Order Updated");
 			return order;
