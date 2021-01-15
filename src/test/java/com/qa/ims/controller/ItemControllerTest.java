@@ -49,8 +49,8 @@ public class ItemControllerTest {
 		Mockito.doReturn(price).when(itemController).getDouble();
 		Item item = new Item(itemName, price);
 		Item savedItem = new Item(1L, "Toaster", 24.00);
-		Mockito.when(itemServices.create(savedItem)).thenReturn(savedItem);
-	    assertNotEquals(savedItem, itemController.create());
+		Mockito.when(itemServices.create(item)).thenReturn(savedItem);
+	    assertEquals(savedItem, itemController.create());
 	}
 	
 	@Test
