@@ -26,6 +26,12 @@ public class ItemController implements CrudController<Item>{
  String getInput() {
 	 return Utils.getInput();
  }
+
+ double getDoubleInput() {
+	 return Utils.getDoubleInput();
+ } 
+ 
+ 
  
  double getDouble() {
 	 return Utils.getDoubleInput();
@@ -46,23 +52,24 @@ public List<Item> readAll() {
 
 @Override
 public Item create() {
-	LOGGER.info("May you please enter the item name");
+	LOGGER.info("Please enter the item name");
 	String itemName = getInput();
-	LOGGER.info("May you enter the item price");
-	double price = getDouble();
-	Item item = itemService.create(new Item(itemName,price));
-	LOGGER.info("Item Created");
+	LOGGER.info("Please enter the item price");
+	double price = getDoubleInput();
+	Item item = itemService.create(new Item(itemName, price));
+	LOGGER.info("Item created");
 	return item;
 }
-
+ 
+//Updates 
 @Override
 public Item update() {
-	LOGGER.info("Please enter the id of the item you would like to update");
+	LOGGER.info("Please enter the item id of the item you would like to update");
 	Long itemId = Long.valueOf(getInput());
 	LOGGER.info("Please enter the item name");
 	String itemName = getInput();
-	LOGGER.info("Please enter the price of the item");
-	double price = getDouble();
+	LOGGER.info("Please enter the item price");
+	double price = getDoubleInput();
 	Item item = itemService.update(new Item(itemId, itemName, price));
 	return item;
 }
