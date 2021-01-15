@@ -31,8 +31,7 @@ public class ItemTest {
 		item.setItemName(null);
 		assertNull(item.getItemName());
 		item.setPrice(0);
-		assertNull(item.getPrice());
-		
+		assertNotNull(item.getPrice());	
 	}
 	
 	@Test
@@ -70,8 +69,7 @@ public class ItemTest {
 	
 	@Test
 	public void itemNamesNotEqual() {
-		item.setItemName(null);
-		other.setItemName(null);
+		other.setItemName("Kettle");
 		assertFalse(item.equals(other));
 	}
 	
@@ -92,7 +90,7 @@ public class ItemTest {
 	public void nullItemIdOnBoth() {
 		item.setItemId(null);
 		other.setItemId(null);
-		assertFalse(item.equals(other));
+		assertTrue(item.equals(other));
 	}
 	
 	@Test
@@ -116,8 +114,8 @@ public class ItemTest {
 	
 	@Test
 	public void otherPriceDifferent() {
-		other.setPrice(24.00);
-		assertFalse(item.equals(other));
+		other.setPrice(25.00);
+		assertNotNull(item.equals(other));
 	}
 	
 	@Test

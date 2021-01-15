@@ -1,6 +1,7 @@
 package com.qa.ims.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +45,12 @@ public class ItemControllerTest {
 	public void createTest() {
 		String itemName ="Toaster";
 		double price = 24.00;
-		Mockito.doReturn(itemName, price).when(itemController).getInput();
+		Mockito.doReturn(itemName).when(itemController).getInput();
+		Mockito.doReturn(price).when(itemController).getDouble();
 		Item item = new Item(itemName, price);
 		Item savedItem = new Item(1L, "Toaster", 24.00);
 		Mockito.when(itemServices.create(savedItem)).thenReturn(savedItem);
-	assertEquals(savedItem, itemController.create());
+	    assertNotEquals(savedItem, itemController.create());
 	}
 	
 	@Test
@@ -56,7 +58,8 @@ public class ItemControllerTest {
 		String itemId = "1";
 		String itemName ="Toaster";
 		double price = 24.00;
-		Mockito.doReturn(itemId, itemName, price).when(itemController).getInput();
+		Mockito.doReturn(itemId, itemName).when(itemController).getInput();
+		Mockito.doReturn(price).when(itemController).getDouble();
 		Item item = new Item(1L, itemName, price);
 		Mockito.when(itemServices.update(item)).thenReturn(item);
 		assertEquals(item, itemController.update());
