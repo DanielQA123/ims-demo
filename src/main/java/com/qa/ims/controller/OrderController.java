@@ -88,8 +88,14 @@ public class OrderController implements CrudController<Order> {
 
 	@Override
 	public Order update() {
-	// TODO Auto-generated method stub
-			return null;
+		LOGGER.info("Please enter the order id you would like to update");
+		Long orderId = Long.valueOf(getInput());
+		LOGGER.info("Please enter your customer id to update your order");
+		Long customerId = Long.valueOf(getInput());
+		Order order = new Order(orderId, customerId);
+		order = orderService.update(order);
+		LOGGER.info("Order Updated");
+			return order;
 		}
 		
 //	@Override
