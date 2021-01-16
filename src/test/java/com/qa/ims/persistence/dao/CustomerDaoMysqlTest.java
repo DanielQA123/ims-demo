@@ -1,5 +1,7 @@
 package com.qa.ims.persistence.dao;
 
+import static org.junit.Assert.assertEquals;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -10,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.qa.ims.Ims;
+import com.qa.ims.persistence.domain.Customer;
 
 public class CustomerDaoMysqlTest {
 
@@ -40,8 +43,17 @@ public class CustomerDaoMysqlTest {
 	
 	@Test
 	public void createTest() {
+		//creating the instance of a class
 		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
-		
-		
+		//setting vals
+		String firstName ="man";
+		String surname="help";
+		//create a new customer
+		Customer customer = new Customer(firstName, surname);
+		Customer savedCustomer = new Customer(firstName, surname);
+		customer = customerDaoMysql.create(customer);
+		assertEquals(savedCustomer, customer);
 	}
+	
+	
 }
