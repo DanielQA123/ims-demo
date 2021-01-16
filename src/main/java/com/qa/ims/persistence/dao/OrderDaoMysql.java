@@ -77,9 +77,8 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order create(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("INSERT into orders (shippingAddress, customer_id) values('" + order.getShippingAddress()
+			stat.executeUpdate("INSERT into orders (shippingAddress, customer_id, item_name ) values('" + order.getShippingAddress() + "'," + order.getItemName()
 					+ "'," + order.getCustomerId() + ")");
-			stat.executeUpdate("INSERT into orderline (item_name, shippingAddress, order_id, item_id, customer_id) values('" + orderline.get)
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -120,7 +119,7 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order update(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("UPDATE orders set customerId ='" + order.getCustomerId() + "', shippingAddress ='" + "' where orderId=" + order.getOrderId());
+			stat.executeUpdate("UPDATE orders set customerId ='" + order.getCustomerId() + "', shippingAddress ='" + order.getShippingAddress() + "' where orderId=" + order.getOrderId());
 		return readOrder(order.getOrderId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
