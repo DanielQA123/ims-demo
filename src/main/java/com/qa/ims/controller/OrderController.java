@@ -33,11 +33,11 @@ public class OrderController implements CrudController<Order> {
 	this.orderService = orderService;
 }
 
-	List<Item> purchasedItem = new ArrayList<>();
+//	List<Item> purchasedItem = new ArrayList<>();
 	
-	public void addItem(Item item) {
-		purchasedItem.add(item);
-	}
+//	public void addItem(Item item) {
+//		purchasedItem.add(item);
+//	}
 	
 	String getInput() {
 		return Utils.getInput();
@@ -71,7 +71,11 @@ public class OrderController implements CrudController<Order> {
 	String shippingAddress = getInput();
 	LOGGER.info("May you enter the customer id");
 	Long customerId = getLongInput();
-	Order order = new Order(shippingAddress, customerId);
+	LOGGER.info("May you add the item to this order");
+	String itemName = getInput();
+	List<Order> item = new ArrayList<>();
+	Order order = new Order(shippingAddress, customerId, itemName);
+	item.add(order);
 	order = orderService.create(order);
 	LOGGER.info("Order created");		
 	return order;
