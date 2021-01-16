@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.qa.ims.persistence.domain.Item;
+//import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
-import com.qa.ims.services.ItemServices;
+//import com.qa.ims.services.ItemServices;
 import com.qa.ims.services.OrderServices;
 import com.qa.ims.utils.Utils;
 
@@ -26,8 +26,6 @@ public class OrderController implements CrudController<Order> {
 //	    this.itemService = itemService;
 //	}
 //	
-	
-
 
 	public OrderController(CrudServices<Order> orderService) {
 	this.orderService = orderService;
@@ -62,7 +60,6 @@ public class OrderController implements CrudController<Order> {
 		return orders;
 	}
 //Creating a new order
-	
 	
 	
 	@Override
