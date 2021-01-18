@@ -11,7 +11,6 @@ public class Order {
 	private Long orderId;
 	private String shippingAddress;
 	private Long customerId;
-	private String itemName;
 	private Long itemId;
 
 	public Order(Long orderId, Long customerId) {
@@ -84,34 +83,19 @@ public class Order {
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
-	
-	public String getItemName() {
-		return itemName;
+
+	public Long getItemId() {
+		return itemId;
 	}
 
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
 	}
-	
-	
-//	public List<Item> getPurchasedItem() {
-//		return purchasedItem;
-//	}
-//
-//	public void setPurchasedItem(List<Item> purchasedItem) {
-//		this.purchasedItem = purchasedItem;
-//	}
-
-//	@Override
-//	public String toString() {
-//		return "Order [orderId=" + orderId + ", shippingAddress=" + shippingAddress + ", customerId=" + customerId
-//				+ ", purchasedItem=" + purchasedItem + "]";
-//	}
 
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", shippingAddress=" + shippingAddress + ", customerId=" + customerId
-				+ ", itemName=" + itemName + "]";
+				+ ", itemId=" + itemId + "]";
 	}
 
 	@Override
@@ -119,7 +103,7 @@ public class Order {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
-		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
 		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
 		result = prime * result + ((shippingAddress == null) ? 0 : shippingAddress.hashCode());
 		return result;
@@ -139,10 +123,10 @@ public class Order {
 				return false;
 		} else if (!customerId.equals(other.customerId))
 			return false;
-		if (itemName == null) {
-			if (other.itemName != null)
+		if (itemId == null) {
+			if (other.itemId != null)
 				return false;
-		} else if (!itemName.equals(other.itemName))
+		} else if (!itemId.equals(other.itemId))
 			return false;
 		if (orderId == null) {
 			if (other.orderId != null)
@@ -156,5 +140,25 @@ public class Order {
 			return false;
 		return true;
 	}
+	
+	
+	
+	
+//	public List<Item> getPurchasedItem() {
+//		return purchasedItem;
+//	}
+//
+//	public void setPurchasedItem(List<Item> purchasedItem) {
+//		this.purchasedItem = purchasedItem;
+//	}
+
+//	@Override
+//	public String toString() {
+//		return "Order [orderId=" + orderId + ", shippingAddress=" + shippingAddress + ", customerId=" + customerId
+//				+ ", purchasedItem=" + purchasedItem + "]";
+//	}
+
+
+	
 
 }

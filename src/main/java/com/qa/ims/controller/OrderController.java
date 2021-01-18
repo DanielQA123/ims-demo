@@ -69,9 +69,9 @@ public class OrderController implements CrudController<Order> {
 	LOGGER.info("May you enter the customer id");
 	Long customerId = getLongInput();
 	LOGGER.info("May you add the item to this order");
-	String itemName = getInput();
+	Long itemId = getLongInput();
 	List<Order> item = new ArrayList<>();
-	Order order = new Order(shippingAddress, customerId, itemName);
+	Order order = new Order(shippingAddress, customerId, itemId);
 	item.add(order);
 	order = orderService.create(order);
 	LOGGER.info("Order created");		
