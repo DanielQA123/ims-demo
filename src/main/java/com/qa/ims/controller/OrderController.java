@@ -19,7 +19,7 @@ public class OrderController implements CrudController<Order> {
 
 	private CrudServices<Order> orderService;
 	
-	List<Order> priceOrder = new ArrayList<>();
+	List<Item> orders = new ArrayList<>();
 	
 
 //	private CrudServices<Item> itemService;
@@ -189,10 +189,10 @@ public class OrderController implements CrudController<Order> {
 	public double OrderCost() {
 		double cost = 0.0D;
 		
-		for (Item order : priceOrder) {
+		for (Item order : orders) {
 			cost += order.getPrice();
 		}
 		return cost;
-		
 }
+	
 }
