@@ -12,6 +12,7 @@ public class Order {
 	private String shippingAddress;
 	private Long customerId;
 	private String itemName;
+	private Long itemId;
 
 	public Order(Long orderId, Long customerId) {
 		super();
@@ -25,19 +26,19 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public Order(Long orderId, String shippingAddress, Long customerId, String itemName) {
+	public Order(Long orderId, String shippingAddress, Long customerId, Long itemId) {
 		super();
 		this.orderId = orderId;
 		this.shippingAddress = shippingAddress;
 		this.customerId = customerId;
-		this.itemName = itemName;
+		this.itemId = itemId;
 	}
 
-	public Order(String shippingAddress, Long customerId, String itemName) {
+	public Order(String shippingAddress, Long customerId, Long itemId) {
 		super();
 		this.shippingAddress = shippingAddress;
 		this.customerId = customerId;
-		this.itemName = itemName;
+		this.itemId = itemId;
 	}
 
 //	public Order(String shippingAddress, List<Item> purchasedItem) {
