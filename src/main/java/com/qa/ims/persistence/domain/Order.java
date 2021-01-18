@@ -13,6 +13,12 @@ public class Order {
 	private Long customerId;
 	private Long itemId;
 
+	
+	public Order(Long customerId) {
+		super();
+		this.customerId = customerId;
+	}
+
 	public Order(Long orderId, Long customerId) {
 		super();
 		this.orderId = orderId;

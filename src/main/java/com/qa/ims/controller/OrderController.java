@@ -13,13 +13,13 @@ import com.qa.ims.services.OrderServices;
 import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order> {
-	
+
 	public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 
 	private CrudServices<Order> orderService;
-	
+
 //	private CrudServices<Item> itemService;
-	
+
 //	public OrderController(CrudServices<Order> orderService, CrudServices<Item> itemService) {
 //		super();
 //		this.orderService = orderService;
@@ -28,40 +28,39 @@ public class OrderController implements CrudController<Order> {
 //	
 
 	public OrderController(CrudServices<Order> orderService) {
-	this.orderService = orderService;
-}
+		this.orderService = orderService;
+	}
 
 //	List<Item> purchasedItem = new ArrayList<>();
-	
+
 //	public void addItem(Item item) {
 //		purchasedItem.add(item);
 //	}
-	
+
 	String getInput() {
 		return Utils.getInput();
 	}
-	
+
 	double getDouble() {
 		return Utils.getDouble();
 	}
-	
+
 	Long getLongInput() {
 		return Utils.getLongInput();
 	}
-	
-	//reads all the info regarding orders to the logger
-	
+
+	// reads all the info regarding orders to the logger
+
 	@Override
 	public List<Order> readAll() {
 		List<Order> orders = orderService.readAll();
-		for(Order order: orders) {
+		for (Order order : orders) {
 			LOGGER.info(order.toString());
 		}
 		return orders;
 	}
 //Creating a new order
-	
-	
+
 //	@Override
 //	public Order create() {
 //	LOGGER.info("May you enter the address you want the order to be delivered to");
@@ -77,29 +76,31 @@ public class OrderController implements CrudController<Order> {
 //	LOGGER.info("Order created");		
 //	return order;
 //	}
-	
+
 	@Override
 	public Order create() {
 		List<Order> item = new ArrayList<>();
-	LOGGER.info("May you enter the address you want the order to be delivered to");
-	String shippingAddress = getInput();
-	LOGGER.info("May you enter the customer id");
-	Long customerId = getLongInput();
-	Order order = new Order(shippingAddress, customerId);
-	item.add(order);
-	LOGGER.info("Please may you ass");
-	
-	
-	LOGGER.info("May you add the item to this order");
-	Long itemId = getLongInput();
-	List<Order> item = new ArrayList<>();
-	Order order = new Order(shippingAddress, customerId, itemId);
-	item.add(order);
-	order = orderService.create(order);
-	LOGGER.info("Order created");		
-	return order;
+//		LOGGER.info("May you enter the address you want the order to be delivered to");
+//		String shippingAddress = getInput();
+		LOGGER.info("May you enter the customer id");
+		Long customerId = getLongInput();
+		Order order = new Order(customerId);
+		item.add(order);
+//		LOGGER.info("Please may you enter the item id please");
+		Long itemId;
+		boolean addItems = true;
+		while (addItems) {
+			LOGGER.info("Please enter the item id");
+			itemId = getLongInput();
+			LOGGER.info("Enter the shipping/order address");
+			String shippingAddress = getInput();
+			order = orderService.create(new Order(shippingAddress, customerId, itemId));
+			item.add(order);
+			LOGGER.info("Order Created");
+		}
+		return order;
 	}
-	
+
 //	LOGGER.info("Add your purchased item that you want to create an order for ");
 //	List<Item> purchasedItem = itemService.readAll();
 //	for (Item item : purchasedItem) {
@@ -120,9 +121,9 @@ public class OrderController implements CrudController<Order> {
 		Order order = new Order(orderId, shippingAddress, customerId);
 		order = orderService.update(order);
 		LOGGER.info("Order Updated");
-			return order;
-		}
-		
+		return order;
+	}
+
 //	@Override
 //	public Order update() {
 //		LOGGER.info("Please enter the id of the order you would like to update");
@@ -144,8 +145,7 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("Please enter the customer id to confirm deletion of order");
 		Long customerId = Long.valueOf(getInput());
 		orderService.delete(orderId);
-		orderService.delete(customerId);	
+		orderService.delete(customerId);
 	}
-
 
 }
