@@ -110,7 +110,7 @@ public class OrderController implements CrudController<Order> {
 			LOGGER.info("Enter the shipping/order address");
 			String shippingAddress = getInput();
 			order = orderService.create(new Order(shippingAddress, customerId, itemId));
-			order = orderlineService.create(new Order(customerId,itemId));
+			order = orderlineService.create(order);
 			item.add(order);
 			LOGGER.info("Order Created");
 		}
