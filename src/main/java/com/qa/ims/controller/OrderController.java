@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.qa.ims.persistence.domain.Item;
 //import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
@@ -17,6 +18,9 @@ public class OrderController implements CrudController<Order> {
 	public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 
 	private CrudServices<Order> orderService;
+	
+	List<Order> priceOrder = new ArrayList<>();
+	
 
 //	private CrudServices<Item> itemService;
 
@@ -181,5 +185,14 @@ public class OrderController implements CrudController<Order> {
 		orderService.delete(orderId);
 		orderService.delete(customerId);
 	}
-
+	
+	public double OrderCost() {
+		double cost = 0.0D;
+		
+		for (Item order : priceOrder) {
+			cost += order.getPrice();
+		}
+		return cost;
+		
+}
 }
