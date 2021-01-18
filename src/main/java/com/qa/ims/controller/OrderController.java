@@ -62,12 +62,34 @@ public class OrderController implements CrudController<Order> {
 //Creating a new order
 	
 	
+//	@Override
+//	public Order create() {
+//	LOGGER.info("May you enter the address you want the order to be delivered to");
+//	String shippingAddress = getInput();
+//	LOGGER.info("May you enter the customer id");
+//	Long customerId = getLongInput();
+//	LOGGER.info("May you add the item to this order");
+//	Long itemId = getLongInput();
+//	List<Order> item = new ArrayList<>();
+//	Order order = new Order(shippingAddress, customerId, itemId);
+//	item.add(order);
+//	order = orderService.create(order);
+//	LOGGER.info("Order created");		
+//	return order;
+//	}
+	
 	@Override
 	public Order create() {
+		List<Order> item = new ArrayList<>();
 	LOGGER.info("May you enter the address you want the order to be delivered to");
 	String shippingAddress = getInput();
 	LOGGER.info("May you enter the customer id");
 	Long customerId = getLongInput();
+	Order order = new Order(shippingAddress, customerId);
+	item.add(order);
+	LOGGER.info("Please may you ass");
+	
+	
 	LOGGER.info("May you add the item to this order");
 	Long itemId = getLongInput();
 	List<Order> item = new ArrayList<>();
