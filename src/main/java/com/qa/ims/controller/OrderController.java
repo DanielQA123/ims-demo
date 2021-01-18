@@ -129,30 +129,34 @@ public class OrderController implements CrudController<Order> {
 		List<Order> item2 = new ArrayList<>();
 		LOGGER.info("Please enter the order id you would like to update");
 		Long orderId = Long.valueOf(getInput());
-		LOGGER.info("Please enter your customer id to update your order");
+//		LOGGER.info("Please enter your customer id to update your order");
 		Long customerId = Long.valueOf(getInput());
-		Order order = new Order(orderId, customerId);
+		Order order = new Order(orderId);
 
-		boolean itemOrder = true;
+		String itemOrder = "yes";
 		boolean notItemOrder = false;
 
-		while (itemOrder) {
-			LOGGER.info("If you want to update the order, re-enter item id");
+		while (itemOrder != null) {
+			LOGGER.info("If you want to remove the order, re-enter item id");
 			Long itemId = getLongInput();
-			item2.add(order);
-
-			if (notItemOrder = false) {
-				LOGGER.info("Do you want to remove item from an order?, please enter customerId");
-				customerId = getLongInput();
-				LOGGER.info("Re enter the shipping/order address");
-				String shippingAddress = getInput();
-				order = orderService.create(new Order(shippingAddress, customerId, itemId));
-				item2.remove(order);
-			}
+			LOGGER.info("Re enter the shipping/order address");
+			String shippingAddress = getInput();
+			order = orderService.create(new Order(shippingAddress, customerId));
+			item2.remove(order);
 			LOGGER.info("Order Updated");
+
+//			if (notItemOrder = false) {
+//				LOGGER.info("Do you want to remove item from an order?, please enter customerId");
+//				customerId = getLongInput();
+//				LOGGER.info("Re enter the shipping/order address");
+//				String shippingAddress = getInput();
+//				order = orderService.create(new Order(shippingAddress, customerId));
+//				item2.remove(order);
 		}
 		return order;
 	}
+
+
 
 //	@Override
 //	public Order update() {
