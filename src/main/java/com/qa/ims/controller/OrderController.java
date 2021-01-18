@@ -86,11 +86,11 @@ public class OrderController implements CrudController<Order> {
 		Long customerId = getLongInput();
 		Order order = new Order(customerId);
 		item.add(order);
-//		LOGGER.info("Please may you enter the item id please");
-		Long itemId;
+		LOGGER.info("Please may you enter the item id please");
+		Long itemId = getLongInput();
 		boolean addItems = true;
 		while (addItems) {
-			LOGGER.info("Please enter the item id");
+			LOGGER.info("Please re-enter your item id");
 			itemId = getLongInput();
 			LOGGER.info("Enter the shipping/order address");
 			String shippingAddress = getInput();
@@ -110,17 +110,47 @@ public class OrderController implements CrudController<Order> {
 //	return order;
 //	}
 
+//	@Override
+//	public Order update() {
+//		LOGGER.info("Please enter the order id you would like to update");
+//		Long orderId = Long.valueOf(getInput());
+//		LOGGER.info("Please enter your customer id to update your order");
+//		Long customerId = Long.valueOf(getInput());
+//		LOGGER.info("Re-enter Order or Shipping Address");
+//		String shippingAddress = getInput();
+//		Order order = new Order(orderId, shippingAddress, customerId);
+//		order = orderService.update(order);
+//		LOGGER.info("Order Updated");
+//		return order;
+//	}
+
 	@Override
 	public Order update() {
+		List<Order> item2 = new ArrayList<>();
 		LOGGER.info("Please enter the order id you would like to update");
 		Long orderId = Long.valueOf(getInput());
 		LOGGER.info("Please enter your customer id to update your order");
 		Long customerId = Long.valueOf(getInput());
-		LOGGER.info("Re-enter Order or Shipping Address");
-		String shippingAddress = getInput();
-		Order order = new Order(orderId, shippingAddress, customerId);
-		order = orderService.update(order);
-		LOGGER.info("Order Updated");
+		Order order = new Order(orderId, customerId);
+
+		boolean itemOrder = true;
+		boolean notItemOrder = false;
+
+		while (itemOrder) {
+			LOGGER.info("If you want to update the order, re-enter item id");
+			Long itemId = getLongInput();
+			item2.add(order);
+
+			if (notItemOrder = false) {
+				LOGGER.info("Do you want to remove item from an order?, please enter customerId");
+				customerId = getLongInput();
+				LOGGER.info("Re enter the shipping/order address");
+				String shippingAddress = getInput();
+				order = orderService.create(new Order(shippingAddress, customerId, itemId));
+				item2.remove(order);
+			}
+			LOGGER.info("Order Updated");
+		}
 		return order;
 	}
 
