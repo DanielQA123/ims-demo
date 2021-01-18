@@ -19,6 +19,9 @@ public class OrderController implements CrudController<Order> {
 
 	private CrudServices<Order> orderService;
 	
+	private CrudServices<Order> orderlineService;
+	
+	
 	List<Item> orders = new ArrayList<>();
 	
 
@@ -33,6 +36,14 @@ public class OrderController implements CrudController<Order> {
 
 	public OrderController(CrudServices<Order> orderService) {
 		this.orderService = orderService;
+	}
+	
+	public CrudServices<Order> getOrderlineService() {
+		return orderlineService;
+	}
+
+	public void setOrderlineService(CrudServices<Order> orderlineService) {
+		this.orderlineService = orderlineService;
 	}
 
 //	List<Item> purchasedItem = new ArrayList<>();
@@ -99,6 +110,7 @@ public class OrderController implements CrudController<Order> {
 			LOGGER.info("Enter the shipping/order address");
 			String shippingAddress = getInput();
 			order = orderService.create(new Order(shippingAddress, customerId, itemId));
+			order = orderlineService.create(new Order(customerId,itemId));
 			item.add(order);
 			LOGGER.info("Order Created");
 		}
@@ -194,5 +206,6 @@ public class OrderController implements CrudController<Order> {
 		}
 		return cost;
 }
+
 	
 }
