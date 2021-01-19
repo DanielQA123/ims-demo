@@ -84,9 +84,67 @@ public class OrderTest {
 		assertTrue(order.equals(other));
 	}
 	
+	@Test
+	public void nullOrderId() {
+		order.setOrderId(null);
+		assertFalse(order.equals(other));
+	}
 	
+	@Test
+	public void nullOrderIdOnBoth() {
+		order.setOrderId(null);
+		other.setOrderId(null);
+		assertTrue(order.equals(other));
+	}
 	
+	@Test
+	public void otherOrderIdDifferent() {
+		other.setOrderId(2L);
+		assertFalse(order.equals(other));
+	}
 	
+	@Test
+	public void nullItemId() {
+		order.setItemId(null);
+		assertFalse(order.equals(other));
+	}
+	
+	@Test
+	public void nullItemIdOnBoth() {
+		order.setItemId(null);
+		other.setItemId(null);
+		assertTrue(order.equals(other));
+	}
+	
+	@Test
+	public void otherItemIdDifferent() {
+		other.setItemId(2L);
+		assertFalse(order.equals(other));
+	}
+	
+	@Test
+	public void nullCustomerId() {
+		order.setCustomerId(null);
+		assertFalse(order.equals(other));
+	}
+	
+	@Test
+	public void nullCustomerIdOnBoth() {
+		order.setCustomerId(null);
+		other.setCustomerId(null);
+		assertTrue(order.equals(other));
+	}
+	
+	@Test
+	public void otherCustomerIdDifferent() {
+		other.setCustomerId(2L);
+		assertFalse(order.equals(other));
+	}
+	
+	@Test
+	public void constructorWithoutId() {
+		
+	}
 	
 	
 }
