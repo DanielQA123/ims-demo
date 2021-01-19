@@ -9,6 +9,7 @@ public enum Domain {
 	CUSTOMER("Information about customers"),
 	ITEM("Individual Items"),
 	ORDER("Purchases of items"),
+	ORDERLINE("Creating of Orderline using item and order info"),
 	STOP("To close the application");
 	
 	public static final Logger LOGGER = Logger.getLogger(Domain.class);
