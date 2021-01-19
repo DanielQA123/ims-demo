@@ -1,6 +1,12 @@
 package com.qa.ims.persistence.domain;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import org.junit.Before;
+import org.junit.Test;
 
 public class OrderTest {
 	
@@ -11,6 +17,38 @@ public class OrderTest {
 	public void setUpTest() {
 		order = new Order(1L, "Help", 1L, 1L);
 		other = new Order(1L, "Help", 1L, 1L);
+	}
+	
+	@Test
+	public void settersTest() {
+		assertNotNull(order.getOrderId());
+		assertNotNull(order.getShippingAddress());
+		assertNotNull(order.getCustomerId());
+		assertNotNull(order.getItemId());
+		
+		order.setOrderId(null);
+		assertNull(order.getOrderId());
+		order.setShippingAddress(null);
+		assertNull(order.getShippingAddress());
+		order.setCustomerId(null);
+		assertNull(order.getCustomerId());
+		order.setItemId(null);
+		assertNull(order.getItemId());
+	}
+	
+	@Test
+	public void equalsWithNull() {
+		assertFalse(order.equals(null));
+	}
+	
+	@Test
+	public void equalsWithDifferentObject() {
+		assertFalse(order.equals(new Object()));
+	}
+	
+	@Test
+	public void createOrderWithId() {
+		assertEquals(1L, order.getOrderId(), 0);
 	}
 
 }
