@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,6 +50,18 @@ public class OrderTest {
 	@Test
 	public void createOrderWithId() {
 		assertEquals(1L, order.getOrderId(), 0);
+		assertEquals("help", order.getShippingAddress());
+		assertEquals(1L, order.getCustomerId(), 0);
+		assertEquals(1L, order.getItemId(), 0);
 	}
-
+	
+	@Test
+	public void checkEquality() {
+		assertTrue(order.equals(order));
+	}
+	
+	@Test
+	public void checkEqualityBetweenDifferentObjects() {
+		assertTrue(order.equals(other));
+	}
 }
