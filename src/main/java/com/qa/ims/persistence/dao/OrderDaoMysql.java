@@ -85,17 +85,17 @@ public class OrderDaoMysql implements Dao<Order> {
 			return null;
 		}
 
-	public Order createOrderline(Order order) {
-		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("INSERT into orderline (customer_id, item_id) values('" + order.getCustomerId() + "," + order.getItemId() + ")");
-			return readLatest();
-		} catch (Exception e) {
-			LOGGER.debug(e.getStackTrace());
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}
+//	public Order createOrderline(Order order) {
+//		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+//				Statement stat = connection.createStatement();) {
+//			stat.executeUpdate("INSERT into orderline (customer_id, item_id) values('" + order.getCustomerId() + "," + order.getItemId() + ")");
+//			return readLatest();
+//		} catch (Exception e) {
+//			LOGGER.debug(e.getStackTrace());
+//			LOGGER.error(e.getMessage());
+//		}
+//		return null;
+//	}
 		
 	
 	public Order readOrder(Long id) {
@@ -130,7 +130,6 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order update(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("UPDATE orderline set customerId ='" + order.getCustomerId() + "', shippingAddress ='" + "' where orderId=" + order.getOrderId());
 			stat.executeUpdate("UPDATE orders set customerId ='" + order.getCustomerId() + "', shippingAddress ='" + "' where orderId=" + order.getOrderId());
 		return readOrder(order.getOrderId());
 		} catch (Exception e) {
@@ -144,7 +143,6 @@ public class OrderDaoMysql implements Dao<Order> {
 	public void delete(long id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement stat = connection.createStatement();) {
-			stat.executeUpdate("DELETE from orderline where id = " + id);
 			stat.executeUpdate("DELETE from orders where id = " + id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());

@@ -8,7 +8,8 @@
 	import com.qa.ims.persistence.domain.Order;
 	import com.qa.ims.persistence.domain.Orderline;
 	import com.qa.ims.services.CrudServices;
-	import com.qa.ims.utils.Utils;
+import com.qa.ims.services.OrderServices;
+import com.qa.ims.utils.Utils;
 
 	public class OrderlineController implements CrudController<Orderline> {
 		
@@ -56,12 +57,12 @@
 		@Override
 		public Orderline update() {
 			List<Orderline> item2 = new ArrayList<>();
-//			LOGGER.info("Please enter the orderline id you would like to update ");
-//			Long orderlineId = Long.valueOf(getLongInput());
-//			LOGGER.info("Please enter the customer id");
-//			Long customerId = Long.valueOf(getLongInput());
-//			Orderline orderline = new Orderline(orderlineId, customerId);
-//			item2.remove(orderline);
+			LOGGER.info("Please enter the orderline id you would like to update ");
+			Long orderlineId = Long.valueOf(getLongInput());
+			LOGGER.info("Please enter the customer id");
+			Long customerId = Long.valueOf(getLongInput());
+			Orderline orderline = new Orderline(orderlineId, customerId);
+			item2.remove(orderline);
 			LOGGER.info("Do you want add to an order");
 			String addOrder = "yes"; 
 			

@@ -10,10 +10,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.persistence.domain.Orderline;
 
-public abstract class OrderlineDaoMysql implements Dao<Orderline> {
+public class OrderlineDaoMysql implements Dao<Orderline> {
 
 	public static final Logger LOGGER = Logger.getLogger(OrderlineDaoMysql.class);
 
