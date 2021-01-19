@@ -142,35 +142,51 @@ public class OrderController implements CrudController<Order> {
 
 	@Override
 	public Order update() {
-		List<Order> item2 = new ArrayList<>();
 		LOGGER.info("Please enter the order id you would like to update");
-		Long orderId = Long.valueOf(getInput());
-//		LOGGER.info("Please enter your customer id to update your order");
-		Long customerId = Long.valueOf(getInput());
-		Order order = new Order(orderId);
-
-		String itemOrder = "yes";
-		boolean notItemOrder = false;
-
-		while (itemOrder != null) {
-			LOGGER.info("If you want to remove the order, re-enter item id");
-			Long itemId = getLongInput();
-			LOGGER.info("Re enter the shipping/order address");
-			String shippingAddress = getInput();
-			order = orderService.create(new Order(shippingAddress, customerId));
-			item2.remove(order);
-			LOGGER.info("Order Updated");
-
-//			if (notItemOrder = false) {
-//				LOGGER.info("Do you want to remove item from an order?, please enter customerId");
-//				customerId = getLongInput();
-//				LOGGER.info("Re enter the shipping/order address");
-//				String shippingAddress = getInput();
-//				order = orderService.create(new Order(shippingAddress, customerId));
-//				item2.remove(order);
-		}
+		Long orderId = Long.valueOf(getLongInput());
+		LOGGER.info("Please enter the item id");
+		Long itemId = Long.valueOf(getLongInput());
+		LOGGER.info("Please enter the customer id");
+		Long customerId = Long.valueOf(getLongInput());
+		LOGGER.info("Enter the Shipping Address");
+		String shippingAddress = getInput();
+		Order order = orderService.update(new Order(orderId, shippingAddress, customerId, itemId));
+		LOGGER.info("Order Updated");
 		return order;
 	}
+		
+		
+		
+		
+//		List<Order> item2 = new ArrayList<>();
+//		LOGGER.info("Please enter the order id you would like to update");
+//		Long orderId = Long.valueOf(getInput());
+////		LOGGER.info("Please enter your customer id to update your order");
+//		Long customerId = Long.valueOf(getInput());
+//		Order order = new Order(orderId);
+//
+//		String itemOrder = "yes";
+//		boolean notItemOrder = false;
+//
+//		while (itemOrder != null) {
+//			LOGGER.info("If you want to remove the order, re-enter item id");
+//			Long itemId = getLongInput();
+//			LOGGER.info("Re enter the shipping/order address");
+//			String shippingAddress = getInput();
+//			order = orderService.create(new Order(shippingAddress, customerId));
+//			item2.remove(order);
+//			LOGGER.info("Order Updated");
+//
+////			if (notItemOrder = false) {
+////				LOGGER.info("Do you want to remove item from an order?, please enter customerId");
+////				customerId = getLongInput();
+////				LOGGER.info("Re enter the shipping/order address");
+////				String shippingAddress = getInput();
+////				order = orderService.create(new Order(shippingAddress, customerId));
+////				item2.remove(order);
+//		}
+//		return order;
+//	}
 
 
 

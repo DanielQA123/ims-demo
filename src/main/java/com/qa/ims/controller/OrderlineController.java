@@ -62,8 +62,7 @@ import com.qa.ims.utils.Utils;
 			Long customerId = Long.valueOf(getLongInput());
 			LOGGER.info("Please enter the item id");
 			Long itemId = getLongInput();
-			LOGGER.info("Please enter the order id"
-					+ "");
+			LOGGER.info("Please enter the order id");
 			Long orderId = getLongInput();
 			Orderline orderline = orderlineService.update(new Orderline(orderlineId, customerId, itemId, orderId));
 			LOGGER.info("Orderline Updated");
