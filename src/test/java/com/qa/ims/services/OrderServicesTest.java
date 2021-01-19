@@ -34,7 +34,7 @@ public class OrderServicesTest {
 	
 	@Test
 	public void orderServicesUpdate() {
-		Order order = new Order(1L, 1L);
+		Order order = new Order(1L, "Help", 1L, 1L);
 		orderServices.update(order);
 		Mockito.verify(orderDao, Mockito.times(1)).update(order);
 	}
