@@ -50,7 +50,7 @@ public class OrderTest {
 	@Test
 	public void createOrderWithId() {
 		assertEquals(1L, order.getOrderId(), 0);
-		assertEquals("help", order.getShippingAddress());
+		assertEquals("Help", order.getShippingAddress());
 		assertEquals(1L, order.getCustomerId(), 0);
 		assertEquals(1L, order.getItemId(), 0);
 	}
@@ -64,4 +64,29 @@ public class OrderTest {
 	public void checkEqualityBetweenDifferentObjects() {
 		assertTrue(order.equals(other));
 	}
+	
+	@Test
+	public void shippingAddressNullButOtherShippingAddressNotNul() {
+		order.setShippingAddress(null);
+		assertFalse(order.equals(other));
+	}
+	
+	@Test
+	public void shippingAddressNotEqual() {
+		other.setShippingAddress("Yo");
+		assertFalse(order.equals(other));
+	}
+	
+	@Test
+	public void checkEqualityBetweenDifferentObjectsNullAddress() {
+		order.setShippingAddress(null);
+		other.setShippingAddress(null);
+		assertTrue(order.equals(other));
+	}
+	
+	
+	
+	
+	
+	
 }
