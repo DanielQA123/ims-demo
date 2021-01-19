@@ -143,8 +143,29 @@ public class OrderTest {
 	
 	@Test
 	public void constructorWithoutId() {
-		
+		Order order = new Order("Help");
+		assertNull(order.getOrderId());
+		assertNull(order.getCustomerId());
+		assertNull(order.getItemId());
+		assertNotNull(order.getShippingAddress());
 	}
 	
+	@Test
+	public void hashCodeTest() {
+		assertEquals(order.hashCode(), other.hashCode());
+	}
+	
+	@Test
+	public void hashCodeTestWithNull() {
+		Order order = new Order(null, null, null, null);
+		Order other = new Order(null, null, null, null);
+		assertEquals(order.hashCode(), other.hashCode());
+	}
+	
+	@Test
+	public void toStringTest() {
+		String toString = "Order [orderId=1, shippingAddress=Help, itemId=1, customerId=1]";
+		assertEquals(toString, order.toString());
+	}
 	
 }

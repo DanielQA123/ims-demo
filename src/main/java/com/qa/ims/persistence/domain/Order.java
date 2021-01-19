@@ -65,6 +65,11 @@ public class Order {
 		this.shippingAddress = shippingAddress;
 		this.customerId = customerId;
 	}
+	
+	public Order(String shippingAddress) {
+		super();
+		this.shippingAddress = shippingAddress;
+	}
 
 	public Long getOrderId() {
 		return orderId;
