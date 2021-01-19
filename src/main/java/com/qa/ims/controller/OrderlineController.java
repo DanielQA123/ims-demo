@@ -56,33 +56,46 @@ import com.qa.ims.utils.Utils;
 
 		@Override
 		public Orderline update() {
-			List<Orderline> item2 = new ArrayList<>();
-			LOGGER.info("Please enter the orderline id you would like to update ");
+			LOGGER.info("Please enter the orderline id you would like to update");
 			Long orderlineId = Long.valueOf(getLongInput());
-			LOGGER.info("Please enter the customer id");
+			LOGGER.info("Please enter the customer id you would like to update");
 			Long customerId = Long.valueOf(getLongInput());
-			Orderline orderline = new Orderline(orderlineId, customerId);
-			item2.remove(orderline);
-			LOGGER.info("Do you want add to an order");
-			String addOrder = "yes"; 
-			
-			if (addOrder == "yes" ) {
-			while(addOrder == "yes") {
-				LOGGER.info("Add the item id");
-				Long itemId = getLongInput();
-				LOGGER.info("Add the order id");
-				Long orderId = getLongInput();
-				LOGGER.info("Please enter the orderline id you would like to update ");
-				Long orderlineId = Long.valueOf(getLongInput());
-				LOGGER.info("Please enter the customer id");
-				Long customerId = Long.valueOf(getLongInput());
-				Orderline orderline = orderlineService.update(new Orderline(orderlineId, customerId, itemId, orderId));
-				item2.add(orderline);
-				LOGGER.info("Orderline Updated");
-			}
+			LOGGER.info("Please enter the item id you would like to update");
+			Long itemId = getLongInput();
+			LOGGER.info("Please enter the order id you would like to update");
+			Long orderId = getLongInput();
+			Orderline orderline = orderlineService.update(new Orderline(orderlineId, customerId, itemId, orderId));
+			LOGGER.info("Orderline Updated");
 			return orderline;
-			}
 		}
+			
+				
+//			List<Orderline> item2 = new ArrayList<>();
+//			LOGGER.info("Please enter the orderline id you would like to update ");
+//			Long orderlineId = Long.valueOf(getLongInput());
+//			LOGGER.info("Please enter the customer id");
+//			Long customerId = Long.valueOf(getLongInput());
+//			Orderline orderline = new Orderline(orderlineId, customerId);
+//			item2.remove(orderline);
+//			LOGGER.info("Do you want add to an order");
+//			String addOrder = "yes"; 
+//			if (addOrder == "yes" ) {
+//			while(addOrder == "yes") {
+//				LOGGER.info("Add the item id");
+//				Long itemId = getLongInput();
+//				LOGGER.info("Add the order id");
+//				Long orderId = getLongInput();
+//				LOGGER.info("Please enter the orderline id you would like to update ");
+//				Long orderlineId = Long.valueOf(getLongInput());
+//				LOGGER.info("Please enter the customer id");
+//				Long customerId = Long.valueOf(getLongInput());
+//				Orderline orderline = orderlineService.update(new Orderline(orderlineId, customerId, itemId, orderId));
+//				item2.add(orderline);
+//				LOGGER.info("Orderline Updated");
+//			}
+//			return orderline;
+//			}
+//		}
 
 		@Override
 		public void delete() {
