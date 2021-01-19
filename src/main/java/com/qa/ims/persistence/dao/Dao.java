@@ -2,6 +2,7 @@ package com.qa.ims.persistence.dao;
 
 import java.util.List;
 
+
 public interface Dao<T> {
 
     List<T> readAll();
@@ -11,5 +12,6 @@ public interface Dao<T> {
     T update(T t);
      
     void delete(long id);
+
 }
 	

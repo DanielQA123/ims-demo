@@ -71,6 +71,7 @@ public Item update() {
 	LOGGER.info("Please enter the item price");
 	double price = getDoubleInput();
 	Item item = itemService.update(new Item(itemId, itemName, price));
+	LOGGER.info("Item Updated");
 	return item;
 }
 
