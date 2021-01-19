@@ -12,7 +12,7 @@ package com.qa.ims.persistence.dao;
 	import com.qa.ims.persistence.domain.Order;
 	import com.qa.ims.persistence.domain.Orderline;
 
-	public class OrderlineDaoMysql implements Dao<Order> {
+	public abstract class OrderlineDaoMysql implements Dao<Order> {
 
 		public static final Logger LOGGER = Logger.getLogger(OrderlineDaoMysql.class);
 
@@ -38,23 +38,29 @@ package com.qa.ims.persistence.dao;
 			Long customerId = resultSet.getLong("customer_id");
 			return new Orderline(orderlineId, itemId, customerId);
 		}
-
-		@Override
+		
 		public List<Orderline> readAll() {
-			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-					Statement stat = connection.createStatement();
-					ResultSet resultSet = stat.executeQuery("SELECT * from orderline");) {
-				ArrayList<Orderline> orderlines = new ArrayList<>();
-				while (resultSet.next()) {
-					orderlines.add(orderlineFromResultSet(resultSet));
-				}
-				return orderlines;
-			} catch (SQLException e) {
-				LOGGER.debug(e.getStackTrace());
-				LOGGER.error(e.getMessage());
-			}
-			return new ArrayList<>();
+			
 		}
+
+		
+		
+//		@Override
+//		public List<Orderline> readAll() {
+//			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+//					Statement stat = connection.createStatement();
+//					ResultSet resultSet = stat.executeQuery("SELECT * from orderline");) {
+//				ArrayList<Orderline> orderlines = new ArrayList<>();
+//				while (resultSet.next()) {
+//					orderlines.add(orderlineFromResultSet(resultSet));
+//				}
+//				return orderlines;
+//			} catch (SQLException e) {
+//				LOGGER.debug(e.getStackTrace());
+//				LOGGER.error(e.getMessage());
+//			}
+//			return new ArrayList<>();
+//		}
 
 		public Orderline readLatest() {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -70,7 +76,6 @@ package com.qa.ims.persistence.dao;
 			return null;
 		}
 
-		@Override
 		public Orderline create(Orderline orderline) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement stat = connection.createStatement();) {
@@ -84,7 +89,6 @@ package com.qa.ims.persistence.dao;
 			return null;
 		}
 
-		@Override
 		public Orderline update(Orderline orderline) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement stat = connection.createStatement();) {

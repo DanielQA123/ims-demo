@@ -3,7 +3,6 @@ package com.qa.ims.services;
 import java.util.List;
 
 import com.qa.ims.persistence.dao.Dao;
-import com.qa.ims.persistence.dao.OrderlineDaoMysql;
 import com.qa.ims.persistence.domain.Orderline;
 
 public class OrderlineServices implements CrudServices<Orderline> {

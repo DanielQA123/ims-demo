@@ -2,7 +2,6 @@ package com.qa.ims.persistence.dao;
 
 import java.util.List;
 
-import com.qa.ims.persistence.domain.Order;
 
 public interface Dao<T> {
 
