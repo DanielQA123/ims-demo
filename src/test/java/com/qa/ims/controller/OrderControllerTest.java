@@ -1,5 +1,6 @@
 package com.qa.ims.controller;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,6 +18,11 @@ public class OrderControllerTest {
 	@Spy
 	@InjectMocks
 	private OrderController orderController;
+	
+	@Test
+	public void readAllTest() {
+		
+	}
 	
 	
 
