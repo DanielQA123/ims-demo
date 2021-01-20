@@ -37,6 +37,12 @@ public class OrderControllerTest {
 	
 	@Test
 	public void createTest() {
+		List<Order> item = new ArrayList<>();
+		Long customerId = 1L;
+		Long orderId = 1L;
+		Long itemId = 1L;
+		String shippingAddress ="Help";
+		Order order = new Order(1L, "Help", 1L, 1L);
 	}
 	
 	@Test
