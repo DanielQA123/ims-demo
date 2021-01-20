@@ -44,12 +44,10 @@ public class OrderControllerTest {
 		String shippingAddress ="Help";
 		Mockito.doReturn(customerId, orderId, itemId).when(orderController).getLongInput();
 		Mockito.doReturn(shippingAddress).when(orderController).getInput();
-		Order order = new Order(orderId, shippingAddress, itemId, customerId);
+		Order order = new Order(orderId, shippingAddress, customerId);
 		Order savedOrder = new Order(1L, "Help", 1L, 1L);
 		Mockito.when(orderServices.create(order)).thenReturn(savedOrder);
-		assertEquals(savedOrder, orderController.create());
-		Mockito.reset(savedOrder);
-		return;
+		assertEquals(order, orderController.create());
 	}
 	
 	@Test

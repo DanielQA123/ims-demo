@@ -114,7 +114,6 @@ public class OrderController implements CrudController<Order> {
 			if (addItems = true) {
 				LOGGER.info("Query finished");
 				if (addItems = false) {
-					LOGGER.info("Please add an item to this order");
 				}
 			}
 
