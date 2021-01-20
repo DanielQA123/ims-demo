@@ -18,12 +18,10 @@ public class OrderController implements CrudController<Order> {
 	public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 
 	private CrudServices<Order> orderService;
-	
+
 	private CrudServices<Order> orderlineService;
-	
-	
+
 	List<Item> orders = new ArrayList<>();
-	
 
 //	private CrudServices<Item> itemService;
 
@@ -37,7 +35,7 @@ public class OrderController implements CrudController<Order> {
 	public OrderController(CrudServices<Order> orderService) {
 		this.orderService = orderService;
 	}
-	
+
 	public CrudServices<Order> getOrderlineService() {
 		return orderlineService;
 	}
@@ -110,9 +108,16 @@ public class OrderController implements CrudController<Order> {
 			LOGGER.info("Enter the shipping/order address");
 			String shippingAddress = getInput();
 			order = orderService.create(new Order(shippingAddress, customerId, itemId));
-			order = orderlineService.create(order);
 			item.add(order);
 			LOGGER.info("Order Created");
+			LOGGER.info("Is that all the items that you want add?");
+			if (addItems = true) {
+				LOGGER.info("Query finished");
+				if (addItems = false) {
+					LOGGER.info("Please add an item to this order");
+				}
+			}
+
 		}
 		return order;
 	}
@@ -154,10 +159,7 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("Order Updated");
 		return order;
 	}
-		
-		
-		
-		
+
 //		List<Order> item2 = new ArrayList<>();
 //		LOGGER.info("Please enter the order id you would like to update");
 //		Long orderId = Long.valueOf(getInput());
@@ -188,8 +190,6 @@ public class OrderController implements CrudController<Order> {
 //		return order;
 //	}
 
-
-
 //	@Override
 //	public Order update() {
 //		LOGGER.info("Please enter the id of the order you would like to update");
@@ -213,15 +213,14 @@ public class OrderController implements CrudController<Order> {
 		orderService.delete(orderId);
 		orderService.delete(customerId);
 	}
-	
+
 	public double OrderCost() {
 		double cost = 0.0D;
-		
+
 		for (Item order : orders) {
 			cost += order.getPrice();
 		}
 		return cost;
-}
+	}
 
-	
 }
