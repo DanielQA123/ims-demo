@@ -18,14 +18,14 @@ import com.qa.ims.services.OrderlineServices;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderlineControllerTest {
-	
+
 	@Mock
 	private OrderlineServices orderlineServices;
-	
+
 	@Spy
 	@InjectMocks
 	private OrderlineController orderlineController;
-	
+
 	@Test
 	public void readAllTest() {
 		OrderlineController orderlineController = new OrderlineController(orderlineServices);
@@ -34,27 +34,34 @@ public class OrderlineControllerTest {
 		Mockito.when(orderlineServices.readAll()).thenReturn(orderlines);
 		assertEquals(orderlines, orderlineController.readAll());
 	}
-	
+
 	@Test
 	public void createTest() {
-		
+
 	}
-	
+
 	@Test
 	public void updateTest() {
-	Long orderlineId = 1L;
-	Long orderId = 1L;
-	Long itemId = 1L;
-	Long customerId = 1L;
-	Mockito.doReturn(orderlineId, orderId, itemId, customerId).when(orderlineController).getLongInput();
-	Orderline orderline = new Orderline(1L, 1L, 1L, 1L);
-	Mockito.when(orderlineServices.update(orderline)).thenReturn(orderline);
-	
-		
+		Long orderlineId = 1L;
+		Long orderId = 1L;
+		Long itemId = 1L;
+		Long customerId = 1L;
+		Mockito.doReturn(orderlineId, orderId, itemId, customerId).when(orderlineController).getLongInput();
+		Orderline orderline = new Orderline(1L, 1L, 1L, 1L);
+		Mockito.when(orderlineServices.update(orderline)).thenReturn(orderline);
+		assertEquals(orderline, orderlineController.update());
+
 	}
-	
+
 	@Test
 	public void deleteTest() {
+		Long orderlineId = 1L;
+		Long orderId = 1L;
+		Long itemId = 1L;
+		Long customerId = 1L;
+		Mockito.doReturn(orderlineId, orderId, itemId, customerId).when(orderlineController).getLongInput();
+		orderlineController.delete();
+		Mockito.verify(orderlineServices, Mockito.times(4)).delete(1L);
 		
 	}
 

@@ -50,6 +50,12 @@ public class OrderlineController implements CrudController<Orderline> {
 			orderline = orderlineService.create(new Orderline(customerId, itemId, orderId));
 			item.add(orderline);
 			LOGGER.info("Orderline Created");
+			LOGGER.info("Is that all?");
+			if(addOrderline = true) {
+				LOGGER.info("Query finished");
+				 if(addOrderline = false) {	
+				}
+			}
 		}
 		return orderline;
 	}
