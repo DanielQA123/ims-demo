@@ -41,10 +41,10 @@ public class OrderControllerTest {
 	
 	@Test
 	public void UpdateTest() {
-		String orderId = "1";
+		Long orderId = 1L;
 		String shippingAddress ="Help";
-		String itemId = "1";
-		String customerId ="1";
+		Long itemId = 1L;
+		Long customerId = 1L;
 		Mockito.doReturn(shippingAddress).when(orderController).getInput();
 		Mockito.doReturn(orderId, itemId, customerId).when(orderController).getLongInput();
 		Order order = new Order(1L, shippingAddress, 1L, 1L);
@@ -55,9 +55,10 @@ public class OrderControllerTest {
 	@Test
 	public void deleteTest() {
 		String orderId = "1";
-		Mockito.doReturn(orderId).when(orderController).getLongInput();
+		String customerId = "1";
+		Mockito.doReturn(orderId, customerId).when(orderController).getInput();
 		orderController.delete();
-		Mockito.verify(orderServices, Mockito.times(1)).delete(1L);
-	}
+		Mockito.verify(orderServices, Mockito.times(2)).delete(1L);
+	} 
 
 }

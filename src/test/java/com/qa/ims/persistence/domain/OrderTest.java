@@ -164,8 +164,8 @@ public class OrderTest {
 	
 	@Test
 	public void toStringTest() {
-		String toString = "Order [orderId=1, shippingAddress=Help, itemId=1, customerId=1]";
+		String toString = "Order [orderId=1, shippingAddress=Help, customerId=1, itemId=1]";
 		assertEquals(toString, order.toString());
-	}
+	} 
 	
 }
