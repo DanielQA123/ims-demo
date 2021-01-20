@@ -1,5 +1,7 @@
 package com.qa.ims.persistence.domain;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -33,5 +35,27 @@ public class OrderlineTest {
 		orderline.setCustomerId(null);
 		assertNull(orderline.getCustomerId());
 	}
+	
+	@Test
+	public void equalsWithNull() {
+		assertFalse(orderline.equals(null));
+	}
+	
+	@Test
+	public void equalsWithDifferentObject() {
+		assertFalse(orderline.equals(new Object()));
+	}
+	
+	@Test
+	public void createOrderlineWithId() {
+		assertEquals(1L, orderline.getOrderlineId(), 0);
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
