@@ -42,11 +42,13 @@ public class CustomerDaoMysqlTest {
 	@Test
 	public void createTest() {
 		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
-		String firstName ="";
-		String surname = "";
+		String firstName ="chris";
+		String surname = "perrins";
 		Customer customer = new Customer(firstName, surname);
 		Customer savedCustomer = new Customer(firstName, surname);
 		customer = customerDaoMysql.create(customer);
 		assertEquals(savedCustomer, customer);	
 	}
+	
+	
 }
