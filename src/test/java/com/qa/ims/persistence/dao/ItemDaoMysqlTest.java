@@ -86,10 +86,10 @@ public class ItemDaoMysqlTest {
 		Long itemId = 1L;
 		String itemName = "Toaster";
 		double price = 24.00;
-		Item item = new Item(1L, itemName, price);
-		Item savedItem = new Item(1L, itemName, price);
-		item = itemDaoMysql.update(savedItem);
-		assertEquals(savedItem, item);
+		Item item = itemDaoMysql.create(new Item(itemName,price));
+		item.setItemName("Kettle");
+		Item update = itemDaoMysql.update(item);
+		assertEquals(item, update);
 	}
 
 	@Test

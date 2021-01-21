@@ -32,23 +32,24 @@ public class CustomerDaoMysqlTest {
 	
 	@Before
 	public void setup() {
-		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from customers;");
-		} catch (Exception e) {
-			LOGGER.debug(e.getStackTrace());
-			LOGGER.error(e.getMessage());
-		}
+//		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+//				Statement statement = connection.createStatement();) {
+////			statement.executeUpdate("delete from customers;");
+//		} catch (Exception e) {
+//			LOGGER.debug(e.getStackTrace());
+//			LOGGER.error(e.getMessage());
+//		}
 	}
 	
 	@Test
 	public void createTest() {
 		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
-		String firstName ="chris";
-		String surname = "perrins";
-		Customer customer = new Customer(1L,firstName, surname);
+		String firstName ="help";
+		String surname = "man";
+//		Customer customer = new Customer(firstName, surname);
+		Customer customer = customerDaoMysql.create( new Customer(firstName, surname));
 		Customer savedCustomer = new Customer(1L,firstName, surname);
-		customer = customerDaoMysql.create(customer);
+		Customer create = customerDaoMysql.create(customer);
 		assertEquals(savedCustomer, customer);	
 	}
 	@Test
@@ -79,10 +80,10 @@ public class CustomerDaoMysqlTest {
 		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
 		String firstName = "chris";
 		String surname = "perrins";
-		Customer customer = new Customer(1L, firstName, surname);
-		Customer savedCustomer = new Customer(1L, firstName, surname);
-		customer = customerDaoMysql.update(savedCustomer);
-		assertEquals(savedCustomer, customer);
+		Customer customer = customerDaoMysql.create( new Customer(firstName, surname));
+		customer.setFirstName("james");
+		Customer update = customerDaoMysql.update(customer);
+		assertEquals(customer, update);
 	}
 	
 	@Test
