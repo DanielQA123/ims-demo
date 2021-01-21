@@ -1,7 +1,9 @@
-Coverage: 34%
-# Project Title
+Coverage: 72.3%
+Inventory Management System (IMS)
 
-One Paragraph of project description goes here
+Project Description:
+The development of a functional application, that uses programming fundamentals such as Java eclipse, MySQL, Git and GitHub. To build a working application that an end user can interact with via,
+a Command-Line Interface to input a user requirements to get a specific output.
 
 ## Getting Started
 
