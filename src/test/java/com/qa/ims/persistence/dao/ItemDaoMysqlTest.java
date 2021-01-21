@@ -79,7 +79,7 @@ public class ItemDaoMysqlTest {
 		items = itemDaoMysql.readAll();
 		assertEquals(savedItem, item);
 	}
-	
+
 	@Test
 	public void updateTest() {
 		ItemDaoMysql itemDaoMysql = new ItemDaoMysql(jdbcConnectionUrl, username, password);
@@ -92,5 +92,11 @@ public class ItemDaoMysqlTest {
 		assertEquals(savedItem, item);
 	}
 
+	@Test
+	public void deleteTest() {
+		ItemDaoMysql itemDaoMysql = new ItemDaoMysql(jdbcConnectionUrl, username, password);
+		Long itemId = 1L;
+		itemDaoMysql.delete(1L);
 	}
 
+}
