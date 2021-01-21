@@ -35,18 +35,18 @@ public class OrderlineControllerTest {
 		assertEquals(orderlines, orderlineController.readAll());
 	}
 
-	@Test
-	public void createTest() {
-		Long orderlineId = 1L;
-		Long orderId = 1L;
-		Long itemId = 1L;
-		Long customerId = 1L;
-		Mockito.doReturn(orderlineId, orderId, itemId, customerId).when(orderlineController).getLongInput();
-		Orderline orderline = new Orderline(orderlineId, orderId, itemId, customerId);
-		Orderline savedOrderline = new Orderline(1L, 1L, 1L, 1L);
-		Mockito.when(orderlineServices.create(orderline)).thenReturn(savedOrderline);
-		assertEquals(orderline, orderlineController.create());
-	}
+//	@Test
+//	public void createTest() {
+//		Long orderlineId = 1L;
+//		Long orderId = 1L;
+//		Long itemId = 1L;
+//		Long customerId = 1L;
+//		Mockito.doReturn(orderlineId, orderId, itemId, customerId).when(orderlineController).getLongInput();
+//		Orderline orderline = new Orderline(orderlineId, orderId, itemId, customerId);
+//		Orderline savedOrderline = new Orderline(1L, 1L, 1L, 1L);
+//		Mockito.when(orderlineServices.create(orderline)).thenReturn(savedOrderline);
+//		assertEquals(orderline, orderlineController.create());
+//	}
 
 	@Test
 	public void updateTest() {

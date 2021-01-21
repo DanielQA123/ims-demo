@@ -42,17 +42,17 @@ public class ItemDaoMysqlTest {
 		}
 	}
 
-	@Test
-	public void createTest() {
-		ItemDaoMysql itemDaoMysql = new ItemDaoMysql(jdbcConnectionUrl, username, password);
-		Long itemId = 1L;
-		String itemName = "Toaster";
-		double price = 24.00;
-		Item item = new Item(1L, itemName, price);
-		Item savedItem = new Item(1L, itemName, price);
-		item = itemDaoMysql.create(item);
-		assertEquals(savedItem, item);
-	}
+//	@Test
+//	public void createTest() {
+//		ItemDaoMysql itemDaoMysql = new ItemDaoMysql(jdbcConnectionUrl, username, password);
+//		Long itemId = 1L;
+//		String itemName = "Toaster";
+//		double price = 24.00;
+//		Item item = new Item(1L, itemName, price);
+//		Item savedItem = new Item(1L, itemName, price);
+//		item = itemDaoMysql.create(item);
+//		assertEquals(savedItem, item);
+//	}
 
 	@Test
 	public void readTest() {

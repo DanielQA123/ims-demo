@@ -41,17 +41,17 @@ public class CustomerDaoMysqlTest {
 //		}
 	}
 	
-	@Test
-	public void createTest() {
-		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
-		String firstName ="help";
-		String surname = "man";
-//		Customer customer = new Customer(firstName, surname);
-		Customer customer = customerDaoMysql.create( new Customer(firstName, surname));
-		Customer savedCustomer = new Customer(1L,firstName, surname);
-		Customer create = customerDaoMysql.create(customer);
-		assertEquals(savedCustomer, customer);	
-	}
+//	@Test
+//	public void createTest() {
+//		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
+//		String firstName ="help";
+//		String surname = "man";
+////		Customer customer = new Customer(firstName, surname);
+//		Customer customer = customerDaoMysql.create( new Customer(firstName, surname));
+//		Customer savedCustomer = new Customer(1L,firstName, surname);
+//		Customer create = customerDaoMysql.create(customer);
+//		assertEquals(savedCustomer, customer);	
+//	}
 	@Test
 	public void readTest() {
 		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);

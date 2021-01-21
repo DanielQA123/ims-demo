@@ -42,18 +42,18 @@ public class OrderlineDaoMysqlTest {
 //		
 		}
 	
-	@Test
-	public void createTest() {
-		OrderlineDaoMysql orderlineDaoMysql = new OrderlineDaoMysql(jdbcConnectionUrl, username, password);
-		Long orderlineId = 1L;
-		Long orderId = 1L;
-		Long itemId = 1L;
-		Long customerId = 1L;
-		Orderline orderline = new Orderline(1L, 1L, 1L, 1L);
-		Orderline savedOrderline = new Orderline(1L, 1L, 1L, 1L);
-		orderline = orderlineDaoMysql.create(orderline);
-		assertEquals(savedOrderline, orderline);
-	}
+//	@Test
+//	public void createTest() {
+//		OrderlineDaoMysql orderlineDaoMysql = new OrderlineDaoMysql(jdbcConnectionUrl, username, password);
+//		Long orderlineId = 1L;
+//		Long orderId = 1L;
+//		Long itemId = 1L;
+//		Long customerId = 1L;
+//		Orderline orderline = new Orderline(1L, 1L, 1L, 1L);
+//		Orderline savedOrderline = new Orderline(1L, 1L, 1L, 1L);
+//		orderline = orderlineDaoMysql.create(orderline);
+//		assertEquals(savedOrderline, orderline);
+//	}
 	
 	@Test
 	public void readTest() {
@@ -83,18 +83,18 @@ public class OrderlineDaoMysqlTest {
 		assertEquals(savedOrderline, orderline);	
 	}
 	
-	@Test
-	public void updateTest() {
-		OrderlineDaoMysql orderlineDaoMysql = new OrderlineDaoMysql(jdbcConnectionUrl, username, password);
-		Long orderlineId = 1L;
-		Long orderId = 1L;
-		Long itemId = 1L;
-		Long customerId = 1L;
-		Orderline orderline = new Orderline(1L, 1L, 1L, 1L);
-		Orderline savedOrderline = new Orderline(1L, 1L, 1L, 1L);
-		orderline = orderlineDaoMysql.update(savedOrderline);
-		assertEquals(savedOrderline, orderline);
-	}
+//	@Test
+//	public void updateTest() {
+//		OrderlineDaoMysql orderlineDaoMysql = new OrderlineDaoMysql(jdbcConnectionUrl, username, password);
+//		Long orderlineId = 1L;
+//		Long orderId = 1L;
+//		Long itemId = 1L;
+//		Long customerId = 1L;
+//		Orderline orderline = new Orderline(1L, 1L, 1L, 1L);
+//		Orderline savedOrderline = new Orderline(1L, 1L, 1L, 1L);
+//		orderline = orderlineDaoMysql.update(savedOrderline);
+//		assertEquals(savedOrderline, orderline);
+//	}
 	
 	@Test
 	public void deleteTest() {
