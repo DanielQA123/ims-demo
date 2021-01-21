@@ -42,9 +42,6 @@ Type on your web browser, download Java eclipse 14 or 14.01.
 Once that’s downloaded, you need to integrate a Maven package as well. 
 You can do this from the eclipse market place or from the web browser but get the latest version. 
 ```
-```
-Give examples
-```
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
@@ -114,6 +111,7 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* I would like to thank, Christophor Perrins.
+* Inspiration: Mumhamad Ali and My family and Peers.
+* I would to thank Aswene and Vinesh, for giving me advice to develop this project. 
+
