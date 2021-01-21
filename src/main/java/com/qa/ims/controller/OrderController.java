@@ -59,7 +59,7 @@ public class OrderController implements CrudController<Order> {
 	}
 
 	Long getLongInput() {
-		return Utils.getLongInput();
+		return Utils.getLongInput(); 
 	}
 
 	// reads all the info regarding orders to the logger
