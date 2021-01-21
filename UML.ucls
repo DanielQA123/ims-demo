@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <enumeration id="1" language="java" name="com.qa.ims.controller.Action" project="Daniel IMS Project" 
     file="/Daniel IMS Project/src/main/java/com/qa/ims/controller/Action.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="286" width="155" x="1306" y="37"/>    
+    <position height="286" width="155" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +13,7 @@
   <interface id="2" language="java" name="com.qa.ims.controller.CrudController" project="Daniel IMS Project" 
     file="/Daniel IMS Project/src/main/java/com/qa/ims/controller/CrudController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="420" y="399"/>    
+    <position height="142" width="159" x="1860" y="417"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
   <class id="3" language="java" name="com.qa.ims.controller.CustomerController" project="Daniel IMS Project" 
     file="/Daniel IMS Project/src/main/java/com/qa/ims/controller/CustomerController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="712" y="121"/>    
+    <position height="214" width="293" x="2309" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -33,7 +33,7 @@
   <class id="4" language="java" name="com.qa.ims.controller.ItemController" project="Daniel IMS Project" 
     file="/Daniel IMS Project/src/main/java/com/qa/ims/controller/ItemController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="247" width="225" x="307" y="11"/>    
+    <position height="247" width="225" x="1446" y="37"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -43,7 +43,7 @@
   <class id="5" language="java" name="com.qa.ims.controller.OrderController" project="Daniel IMS Project" 
     file="/Daniel IMS Project/src/main/java/com/qa/ims/controller/OrderController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1022" y="180"/>    
+    <position height="340" width="296" x="1973" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -53,28 +53,93 @@
   <class id="6" language="java" name="com.qa.ims.controller.OrderlineController" project="Daniel IMS Project" 
     file="/Daniel IMS Project/src/main/java/com/qa/ims/controller/OrderlineController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="198" width="222" x="26" y="12"/>    
+    <position height="198" width="222" x="1711" y="37"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="7">    
-    <end type="SOURCE" refId="6"/>    
+  <class id="7" language="java" name="com.qa.ims.persistence.dao.CustomerDaoMysql" project="Daniel IMS Project" 
+    file="/Daniel IMS Project/src/main/java/com/qa/ims/persistence/dao/CustomerDaoMysql.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="292" x="842" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="com.qa.ims.persistence.dao.Dao" project="Daniel IMS Project" 
+    file="/Daniel IMS Project/src/main/java/com/qa/ims/persistence/dao/Dao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="167" x="703" y="417"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="com.qa.ims.persistence.dao.ItemDaoMysql" project="Daniel IMS Project" 
+    file="/Daniel IMS Project/src/main/java/com/qa/ims/persistence/dao/ItemDaoMysql.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="232" x="1174" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.qa.ims.persistence.dao.OrderDaoMysql" project="Daniel IMS Project" 
+    file="/Daniel IMS Project/src/main/java/com/qa/ims/persistence/dao/OrderDaoMysql.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="243" x="559" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.qa.ims.persistence.dao.OrderlineDaoMysql" project="Daniel IMS Project" 
+    file="/Daniel IMS Project/src/main/java/com/qa/ims/persistence/dao/OrderlineDaoMysql.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="283" x="236" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="12">    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <realization id="8">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
+  <realization id="13">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
   </realization>  
-  <realization id="9">    
+  <realization id="14">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="15">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <realization id="10">    
-    <end type="SOURCE" refId="4"/>    
+  <realization id="16">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="17">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="18">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="19">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
