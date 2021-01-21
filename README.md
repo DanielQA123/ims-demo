@@ -13,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-The following softawre listed are the prerequisties needed to continue work on the project: 
+The following software listed are the prerequisties needed to continue work on the project: 
 
 * GitHub account created 
 * Git software downloaded to the local computer
@@ -24,12 +24,27 @@ The following softawre listed are the prerequisties needed to continue work on t
 For most of the software listed above, you can find websites and youtube tutorials to download the software to your local computer. 
 Some basic knowledge of Git commands, SQL commands as well as entity relationship and Intermediate Java is needed but not compuslory.  
 
-What things you need to install the software and how to install them
+Things you need to install the necessary software and how to install them:
 
+```
+On your web browser, type download Git and select the page that has the latest version of Git. 
+While git is downloading, creating a new GitHub account so you can you use Git to authenticate your GitHub with the software. 
+So when you create a new repository by using git forking and cloning command it will be linked with Git . 
+```
+```
+Create a new Google Cloud Platform account, click on the MySQL tab to create a local MySQL instance. 
+When creating an instance you want to set the name of the instance, the region, password and the location. Once the instance is created open a terminal line, to open the database gcloud sql connect database - -user = root - -quiet. 
+If an errors occurs, click the URL/web address to allow the database/API. Then your password you set for this project.  
+Download MySQL workbench as well to practice with some functionalities. 
+```
+```
+Type on your web browser, download Java eclipse 14 or 14.01. 
+Once that’s downloaded, you need to integrate a Maven package as well. 
+You can do this from the eclipse market place or from the web browser but get the latest version. 
+```
 ```
 Give examples
 ```
-
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
