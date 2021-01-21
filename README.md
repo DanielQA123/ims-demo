@@ -1,7 +1,9 @@
 Coverage: 72.3%
-Inventory Management System (IMS)
+
+## Inventory Management System (IMS)
 
 Project Description:
+
 The development of a functional application, that uses programming fundamentals such as Java eclipse, MySQL, Git and GitHub. To build a working application that an end user can interact with via,
 a Command-Line Interface to input a user requirements to get a specific output.
 
@@ -10,6 +12,17 @@ a Command-Line Interface to input a user requirements to get a specific output.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
+
+The following softawre listed are the prerequisties needed to continue work on the project: 
+
+* GitHub account created 
+* Git software downloaded to the local computer
+* Java with Eclipse downloaded to the local computer
+* MySQL work bench
+* MySQL GCP
+
+For most of the software listed above, you can find websites and youtube tutorials to download the software to your local computer. 
+Some basic knowledge of Git commands, SQL commands as well as entity relationship and Intermediate Java is needed but not compuslory.  
 
 What things you need to install the software and how to install them
 
@@ -77,7 +90,7 @@ We use [SemVer](http://semver.org/) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
-
+* **Daniel Ahuchogu** - *Additional work and Further Development* - [DanielQA123](https://github.com/DanielQA123/ims-demo.git)
 ## License
 
 This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
