@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderlineController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">daniel-ims</a> &gt; <a href="index.source.html" class="el_package">com.qa.ims.controller</a> &gt; <span class="el_source">OrderlineController.java</span></div><h1>OrderlineController.java</h1><pre class="source lang-java linenums">package com.qa.ims.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.qa.ims.persistence.domain.Order;
+import com.qa.ims.persistence.domain.Orderline;
+import com.qa.ims.services.CrudServices;
+import com.qa.ims.services.OrderServices;
+import com.qa.ims.utils.Utils;
+
+public class OrderlineController implements CrudController&lt;Orderline&gt; {
+
+<span class="fc" id="L16">	public static final Logger LOGGER = Logger.getLogger(OrderlineController.class);</span>
+
+	private CrudServices&lt;Orderline&gt; orderlineService;
+
+<span class="fc" id="L20">	public OrderlineController(CrudServices&lt;Orderline&gt; orderlineService) {</span>
+<span class="fc" id="L21">		this.orderlineService = orderlineService;</span>
+<span class="fc" id="L22">	}</span>
+
+	Long getLongInput() {
+<span class="nc" id="L25">		return Utils.getLongInput();</span>
+	}
+
+	@Override
+	public List&lt;Orderline&gt; readAll() {
+<span class="fc" id="L30">		List&lt;Orderline&gt; orderlines = orderlineService.readAll();</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		for (Orderline orderline : orderlines) {</span>
+<span class="fc" id="L32">			LOGGER.info(orderline.toString());</span>
+<span class="fc" id="L33">		}</span>
+<span class="fc" id="L34">		return orderlines;</span>
+	}
+
+	@Override
+	public Orderline create() {
+<span class="nc" id="L39">		List&lt;Orderline&gt; item = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L40">		LOGGER.info(&quot;Please enter the customer id&quot;);</span>
+<span class="nc" id="L41">		Long customerId = getLongInput();</span>
+<span class="nc" id="L42">		Orderline orderline = new Orderline(customerId);</span>
+<span class="nc" id="L43">		item.add(orderline);</span>
+<span class="nc" id="L44">		LOGGER.info(&quot;Please enter the item id please&quot;);</span>
+<span class="nc" id="L45">		Long itemId = getLongInput();</span>
+<span class="nc" id="L46">		boolean addOrderline = true;</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">		while (addOrderline) {</span>
+<span class="nc" id="L48">			LOGGER.info(&quot;Please enter the order id&quot;);</span>
+<span class="nc" id="L49">			Long orderId = getLongInput();</span>
+<span class="nc" id="L50">			orderline = orderlineService.create(new Orderline(customerId, itemId, orderId));</span>
+<span class="nc" id="L51">			item.add(orderline);</span>
+<span class="nc" id="L52">			LOGGER.info(&quot;Orderline Created&quot;);</span>
+<span class="nc" id="L53">			LOGGER.info(&quot;Is that all?&quot;);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">			if(addOrderline = true) {</span>
+<span class="nc" id="L55">				LOGGER.info(&quot;Query finished&quot;);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">				 if(addOrderline = false) {	</span>
+				}
+			}
+<span class="nc" id="L59">		}</span>
+<span class="nc" id="L60">		return orderline;</span>
+	}
+
+	@Override
+	public Orderline update() {
+<span class="fc" id="L65">		LOGGER.info(&quot;Please enter the orderline id you would like to update&quot;);</span>
+<span class="fc" id="L66">		Long orderlineId = Long.valueOf(getLongInput());</span>
+<span class="fc" id="L67">		LOGGER.info(&quot;Please enter the customer id&quot;);</span>
+<span class="fc" id="L68">		Long customerId = Long.valueOf(getLongInput());</span>
+<span class="fc" id="L69">		LOGGER.info(&quot;Please enter the item id&quot;);</span>
+<span class="fc" id="L70">		Long itemId = getLongInput();</span>
+<span class="fc" id="L71">		LOGGER.info(&quot;Please enter the order id&quot;);</span>
+<span class="fc" id="L72">		Long orderId = getLongInput();</span>
+<span class="fc" id="L73">		Orderline orderline = orderlineService.update(new Orderline(orderlineId, customerId, itemId, orderId));</span>
+<span class="fc" id="L74">		LOGGER.info(&quot;Orderline Updated&quot;);</span>
+<span class="fc" id="L75">		return orderline;</span>
+	}
+
+//			List&lt;Orderline&gt; item2 = new ArrayList&lt;&gt;();
+//			LOGGER.info(&quot;Please enter the orderline id you would like to update &quot;);
+//			Long orderlineId = Long.valueOf(getLongInput());
+//			LOGGER.info(&quot;Please enter the customer id&quot;);
+//			Long customerId = Long.valueOf(getLongInput());
+//			Orderline orderline = new Orderline(orderlineId, customerId);
+//			item2.remove(orderline);
+//			LOGGER.info(&quot;Do you want add to an order&quot;);
+//			String addOrder = &quot;yes&quot;; 
+//			if (addOrder == &quot;yes&quot; ) {
+//			while(addOrder == &quot;yes&quot;) {
+//				LOGGER.info(&quot;Add the item id&quot;);
+//				Long itemId = getLongInput();
+//				LOGGER.info(&quot;Add the order id&quot;);
+//				Long orderId = getLongInput();
+//				LOGGER.info(&quot;Please enter the orderline id you would like to update &quot;);
+//				Long orderlineId = Long.valueOf(getLongInput());
+//				LOGGER.info(&quot;Please enter the customer id&quot;);
+//				Long customerId = Long.valueOf(getLongInput());
+//				Orderline orderline = orderlineService.update(new Orderline(orderlineId, customerId, itemId, orderId));
+//				item2.add(orderline);
+//				LOGGER.info(&quot;Orderline Updated&quot;);
+//			}
+//			return orderline;
+//			}
+//		}
+
+	@Override
+	public void delete() {
+<span class="fc" id="L107">		LOGGER.info(&quot;Please enter the orderline id you would like to delete&quot;);</span>
+<span class="fc" id="L108">		Long orderlineId = Long.valueOf(getLongInput());</span>
+<span class="fc" id="L109">		LOGGER.info(&quot;Please enter the order id&quot;);</span>
+<span class="fc" id="L110">		Long orderId = Long.valueOf(getLongInput());</span>
+<span class="fc" id="L111">		LOGGER.info(&quot;Please enter the item id &quot;);</span>
+<span class="fc" id="L112">		Long itemId = Long.valueOf(getLongInput());</span>
+<span class="fc" id="L113">		LOGGER.info(&quot;Finally please enter the customer id to finalise the deletion&quot;);</span>
+<span class="fc" id="L114">		Long customerId = Long.valueOf(getLongInput());</span>
+<span class="fc" id="L115">		orderlineService.delete(orderlineId);</span>
+<span class="fc" id="L116">		orderlineService.delete(orderId);</span>
+<span class="fc" id="L117">		orderlineService.delete(itemId);</span>
+<span class="fc" id="L118">		orderlineService.delete(customerId);</span>
+<span class="fc" id="L119">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

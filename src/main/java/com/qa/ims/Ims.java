@@ -42,7 +42,7 @@ public class Ims {
 
 		LOGGER.info("Which entity would you like to use?");
 		Domain.printDomains();
-
+		
 		Domain domain = Domain.getDomain();
 		LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
 
